@@ -70,7 +70,28 @@
 		.dropdown-menu		{
 			color: white !important;
 			cursor: pointer;
-		}}
+		}
+		.techSpecs {
+			background-color: #F7F7F9;
+			font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+			border: 2px solid #E1E1E8;
+			padding: 15px 21px;
+			display: block;
+			padding: 9.5px;
+			margin: 0 0 10px;
+			font-size: 13px;
+			line-height: 1.42857143;
+			color:
+			#333;
+			word-break: break-all;
+			word-wrap: break-word;
+			background-color:
+			#f5f5f5;
+			border: 1px solid
+			#ccc;
+			border-radius: 4px;
+		}
+
 	</style>
 </head>
 <body class="body-background">
@@ -150,7 +171,17 @@
 
 					<div id="videoInfo" >
 						<h6 data-toggle="tooltip" data-placement="left" title="Enter the URL to where the video file has been uploaded. Relative paths also supported."> Video URL:</h6>
+						  <b>Required Specs:</b>
+						  <table class="techSpecs">
+						  <tr><td>Video Codec: </td><td>H.264 (*.mp4)</td></tr>
+						  <tr><td>Video Format Settings: </td><td>Web Optimized & Align A/V Start</td></tr>
+						  <tr><td>Video Resolution: </td><td>3840x1920</td></tr>
+						  <tr><td>Video Bitrate (max): </td><td>10500 kbps</td></tr>
+						  <tr><td>Video FPS (max): </td><td>30fps</td></tr>
+						  <tr><td>Audio Codec: </td><td>AAC (160 kbps)</td></tr>
+						  </table>
 						  <div id="videoFormGroup" class="form-group">
+						  
 							<div class="input-group">
 							  <input id="videoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('videoURL_value').value, 'videoFormGroup');" placeholder="Video URL starting with https:// & should be *.mp4" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 video is hosted. (starts with https:// & should be *.mp4) (Relative paths also supported)" >
 							  <span class="input-group-btn">
@@ -195,7 +226,12 @@
 						</span> Does the experience contain a separate narrative audio track?
 					<!-- end switch -->
 						<br><br>
-				<div id="audioFormGroup" class="form-group">
+					<b>Required Specs:</b>
+						  <table class="techSpecs">
+						  <tr><td>Audio Codec: </td><td>mp3</td></tr>
+						  <tr><td>Audio Bitrate (recommended): </td><td> 70 - 100kbps</td></tr>
+						  </table>
+					<div id="audioFormGroup" class="form-group">
 				  <div class="input-group">
 				  <input id="narrative_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('narrative_value').value, 'audioFormGroup');" placeholder="Audio URL starting with https:// & should be *.mp3" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your mp3 file is hosted. (starts with https://) & should be *.mp3 (Relative paths also supported)">
 				  <span class="input-group-btn">
