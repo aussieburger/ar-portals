@@ -121,8 +121,12 @@
           </div>
 		</div>
 	</div>
-	<div id="templateContent" style="display:none;" class="row">
+	<div id="templateContent" style="display:none;">
+		<br>
+		<div class="row">
 			<div class="center-col" >
+				<h2 style="text-align:center">Template Configuration</h2>
+				<br>
 				<div id="pageTitleContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Page title seen on the browser window and page bookmarks. <br><b>Mandatory</b>">
 					<h4>Page Title<b>*</b> : </h4>
 					  <input id="pageTitle_value" type="text" class="form-control" placeholder="Page title to be shown by browser window and page bookmarks." data-toggle="tooltip" data-placement="top" title="">
@@ -132,216 +136,221 @@
 						<input id="appKey_value" type="text" class="form-control" placeholder="App Key from 8th Wall console. eg: gLMESoMSiCXZ8Ye4C7ooAO5bRn59zFpGIxN07SWCegxZNtScEoTCxh8S9SsXTB8xOevOSn" data-toggle="tooltip" data-placement="top" title="Usually approx 70 chars long">
 						<a href="https://www.8thwall.com/spring" target="_blank">8thWall Link</a>
 				</div>
-			<div id="modelContainer">
-				<h4>Models</h4>
-				<div id="doorModelContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Enter the URL to where the door model glb file has been uploaded. Relative paths also supported <br><b>Mandatory</b>">
-					<h6>Door Model<b>*</b> :</h6>
-					<input id="doorModel_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('doorModel_value').value, 'doorModelContainer');" placeholder="URL to door model. *.glb file expected" data-toggle="tooltip" data-placement="top" title="Full path with https or Relative path with ./folder/filename.glb" >
-				</div>
-				<div id="balconyModelContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Should the experience contain a balcony? If so enter the URL to where the door model glb file has been uploaded. Relative paths also supported <br><i>(Optional)</i>">
-					<h6 >Balcony Model:</h6>
-						<!-- balcony model switch -->
-						<span class="mrl" onclick="document.getElementById('balconyModel_value').disabled = !document.getElementById('showBalcony_value').checked;">
-							<input type="checkbox" checked data-toggle="switch" id="showBalcony_value" />
-						</span> Include Balcony?
-						<br><br>
-					  <input id="balconyModel_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('balconyModel_value').value, 'balconyModelContainer');" placeholder="URL to balcony model. *.glb file expected" data-toggle="tooltip" data-placement="top" title="Full path with https or Relative path with ./folder/filename.glb">
-				</div>
-			</div>
-			<br>
-			<div id="360videoOrPhotoContainer" class="form-group" data-toggle="tooltip" data-placement="left" data-html="true" title="Should the portal contain a 360 Video <br><b>or</b><br> a 360 Image? <br><b>Mandatory</b>">
-				 <h4>360 Video / Photo <b>*</b></h4>
-				  <label class="radio" for="videoElsePhoto_value" style="width:200px" data-toggle="tooltip" data-placement="right" title="Portal should contain 360 Video." onclick="switchVideoPhotoDiv()">
-					<input type="radio" name="optionsRadios" data-toggle="radio" value="" id="videoElsePhoto_value" required="" checked="" class="custom-radio" ><span class="icons" ><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
-					 360 Video
-				  </label>
-				  <label class="radio" for="videoElsePhoto_valueb" style="width:200px; " data-toggle="tooltip" data-placement="right" title="Portal should contain 360 Photo." onclick="switchVideoPhotoDiv()">
-					<input type="radio" name="optionsRadios" data-toggle="radio" value="" id="videoElsePhoto_valueb" required="" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
-					 360 Photo
-				  </label>
-				  <div class="btn-group" data-toggle="tooltip" data-placement="center" title="Initial Rotation of 360 content. Default is 90 Degrees">
-					  360 content initial rotation: &nbsp;&nbsp; <button id="360Rotation_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">90</button>
-					  <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
-						<li><a onclick="setRotation('0');">0</a></li>
-						<li><a onclick="setRotation('90');">90</a></li>
-						<li><a onclick="setRotation('180');">180</a></li>
-						<li><a onclick="setRotation('270');">270</a></li>
-					  </ul>
+				<div id="modelContainer">
+					<h4>Models</h4>
+					<div id="doorModelContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Enter the URL to where the door model glb file has been uploaded. Relative paths also supported <br><b>Mandatory</b>">
+						<h6>Door Model<b>*</b> :</h6>
+						<input id="doorModel_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('doorModel_value').value, 'doorModelContainer');" placeholder="URL to door model. *.glb file expected" data-toggle="tooltip" data-placement="top" title="Full path with https or Relative path with ./folder/filename.glb" >
 					</div>
-
-					<div id="videoInfo" >
-						<h6 data-toggle="tooltip" data-placement="left" title="Enter the URL to where the video file has been uploaded. Relative paths also supported."> Video URL:</h6>
-						  <b>Required Specs:</b>
-						  <table class="techSpecs">
-						  <tr><td>Video Codec: </td><td>H.264 (*.mp4)</td></tr>
-						  <tr><td>Video Format Settings: </td><td>Web Optimized & Align A/V Start</td></tr>
-						  <tr><td>Video Resolution (max): </td><td>3840x1920</td></tr>
-						  <tr><td>Video Bitrate (max): </td><td>10500 kbps</td></tr>
-						  <tr><td>Video FPS (max): </td><td>30fps</td></tr>
-						  <tr><td>Audio Codec: </td><td>AAC (160 kbps)</td></tr>
-						  </table>
-						  <div id="videoFormGroup" class="form-group">
-						  
-							<div class="input-group">
-							  <input id="videoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('videoURL_value').value, 'videoFormGroup');" placeholder="Video URL starting with https:// & should be *.mp4" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 video is hosted. (starts with https:// & should be *.mp4) (Relative paths also supported)" >
-							  <span class="input-group-btn">
-								<button class="btn btn-default" type="button" onclick="previewVideo()" data-toggle="tooltip" data-placement="top" title="Press to make sure video file exists and is the one you were expecting.">Preview</button>
-							  </span>
-							</div><!-- /input-group -->
-						  </div><!-- /.form-group -->
-							<div class="thumbnail" style="height:340px;" data-toggle="tooltip" data-placement="left" title="Preview window so you can see if the URL is correct. Press the Preview button first.">
-								<video id="videoPreviewWindow" class="video-js" controls preload="auto" poster="" data-setup="{}" style="width:600px; height:280px;  margin: 0 auto;" src="">
-									<!-- <source src="https://vatelier.net/MyDemo/videosphere-showcase/city_halfres.mp4" type="video/mp4">  -->
-								</video>
-							</div>
-
-
+					<div id="balconyModelContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Should the experience contain a balcony? If so enter the URL to where the door model glb file has been uploaded. Relative paths also supported <br><i>(Optional)</i>">
+						<h6 >Balcony Model:</h6>
+							<!-- balcony model switch -->
+							<span class="mrl" onclick="document.getElementById('balconyModel_value').disabled = !document.getElementById('showBalcony_value').checked;">
+								<input type="checkbox" checked data-toggle="switch" id="showBalcony_value" />
+							</span> Include Balcony?
+							<br><br>
+						  <input id="balconyModel_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('balconyModel_value').value, 'balconyModelContainer');" placeholder="URL to balcony model. *.glb file expected" data-toggle="tooltip" data-placement="top" title="Full path with https or Relative path with ./folder/filename.glb">
 					</div>
-					<div id="photoInfo" style="display:none;">
-
-						<h6 data-toggle="tooltip" data-placement="left" title="Enter the URL to where the image file has been uploaded. Relative paths also supported.Relative paths also supported.">Photo URL:</h6>
-						  <div id="photoFormGroup" class="form-group">
-							<div class="input-group">
-							  <input id="photoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('photoURL_value').value, 'photoFormGroup');" placeholder="Image URL starting with https://" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 image is hosted. (starts with https://) (Relative paths also supported)">
-							  <span class="input-group-btn">
-								<button class="btn btn-default" type="button" onclick="previewImage()" data-toggle="tooltip" data-placement="top" title="Press to make sure image exists and is the one you were expecting.">Preview</button>
-							  </span>
-							</div><!-- /input-group -->
-						  </div><!-- /.form-group -->
-
-							  <a class="thumbnail" href="#" data-toggle="tooltip" data-placement="left" title="Preview window so you can see if the URL is correct. Press the Preview button first.">
-								<img id="photoPreviewWindow" alt="Preview Window: Recommended resolution no less than 3840 x 2160 (4k)" style="height: 330px; width: 500px; display: block;" src="#" data-holder-rendered="true">
-							  </a>
-
-					</div>
-			</div>
-			<br>
-		<div id="remainingSettings">
-
-			<div id="narrativeContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Does the experience contain a separate narrative audio track? Supported Format: mp3  Relative paths also supported.<br><i>(Optional)</i>">
-				<h4>Narrative Audio Track:</h4>
-				<!-- switch -->
-						<span class="mrl" onclick="document.getElementById('narrative_value').disabled = !document.getElementById('showNarrativeAudioButton_value').checked; document.getElementById('audioPreview').disabled = !document.getElementById('showNarrativeAudioButton_value').checked;">
-							<input type="checkbox" checked data-toggle="switch" id="showNarrativeAudioButton_value" title=""/>
-						</span> Does the experience contain a separate narrative audio track?
-					<!-- end switch -->
-						<br><br>
-					<b>Required Specs:</b>
-						  <table class="techSpecs">
-						  <tr><td>Audio Codec: </td><td>mp3</td></tr>
-						  <tr><td>Audio Bitrate (recommended): </td><td> 70 - 100kbps</td></tr>
-						  </table>
-					<div id="audioFormGroup" class="form-group">
-				  <div class="input-group">
-				  <input id="narrative_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('narrative_value').value, 'audioFormGroup');" placeholder="Audio URL starting with https:// & should be *.mp3" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your mp3 file is hosted. (starts with https://) & should be *.mp3 (Relative paths also supported)">
-				  <span class="input-group-btn">
-					<button id="audioPreview" class="btn btn-default" type="button" onclick="previewAudio('audioPlayer', document.getElementById('narrative_value').value, 'audioFormGroup')" data-toggle="tooltip" data-placement="top" title="Press to make sure audio track exists and is the one you were expecting.">Preview</button>
-				  </span>
-				  </div>
 				</div>
-				<div id="audioPlayerDiv" style="text-align:center">
-					<audio id="audioPlayer" controls="controls" data-toggle="tooltip" data-placement="top" title="Listen to make sure audio track exists and is the one you were expecting.">
-					  <source id="audioSource" src=""></source>
-					  Your browser does not support the audio format.
-					</audio>
-				</div>
-			</div>
-			<br>
+				<br>
+				<div id="360videoOrPhotoContainer" class="form-group" data-toggle="tooltip" data-placement="left" data-html="true" title="Should the portal contain a 360 Video <br><b>or</b><br> a 360 Image? <br><b>Mandatory</b>">
+					 <h4>360 Video / Photo <b>*</b></h4>
+					  <label class="radio" for="videoElsePhoto_value" style="width:200px" data-toggle="tooltip" data-placement="right" title="Portal should contain 360 Video." onclick="switchVideoPhotoDiv()">
+						<input type="radio" name="optionsRadios" data-toggle="radio" value="" id="videoElsePhoto_value" required="" checked="" class="custom-radio" ><span class="icons" ><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+						 360 Video
+					  </label>
+					  <label class="radio" for="videoElsePhoto_valueb" style="width:200px; " data-toggle="tooltip" data-placement="right" title="Portal should contain 360 Photo." onclick="switchVideoPhotoDiv()">
+						<input type="radio" name="optionsRadios" data-toggle="radio" value="" id="videoElsePhoto_valueb" required="" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+						 360 Photo
+					  </label>
+					  <div class="btn-group" data-toggle="tooltip" data-placement="center" title="Initial Rotation of 360 content. Default is 90 Degrees">
+						  360 content initial rotation: &nbsp;&nbsp; <button id="360Rotation_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">90</button>
+						  <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
+							<li><a onclick="setRotation('0');">0</a></li>
+							<li><a onclick="setRotation('90');">90</a></li>
+							<li><a onclick="setRotation('180');">180</a></li>
+							<li><a onclick="setRotation('270');">270</a></li>
+						  </ul>
+						</div>
 
-			<div id="doorSpawningSoundContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Should the experience play a sound when spawning the door? Supported Format: mp3 Relative paths also supported.<br><i>(Optional)</i>">
-				<h4>Door Spawning Audio:</h4>
-				<!-- switch -->
-						<span class="mrl" onclick="document.getElementById('doorSpawningSound_value').disabled = !document.getElementById('containsDoorSpawningSound_value').checked; document.getElementById('doorSpawningSoundPreview').disabled = !document.getElementById('containsDoorSpawningSound_value').checked;">
-							<input type="checkbox" checked data-toggle="switch" id="containsDoorSpawningSound_value" title=""/>
-						</span> Should the experience play a sound when spawning the door?
-					<!-- end switch -->
-						<br><br>
-				<div id="doorSpawningSoundFormGroup" class="form-group">
-				  <div class="input-group">
-				  <input id="doorSpawningSound_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('doorSpawningSound_value').value, 'doorSpawningSoundFormGroup');" placeholder="Audio URL starting with https:// & should be *.mp3" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your mp3 file is hosted. (starts with https://) & should be *.mp3 (Relative paths also supported)">
-				  <span class="input-group-btn">
-					<button id="doorSpawningSoundPreview" class="btn btn-default" type="button" onclick="previewAudio('doorSpawningSoundPlayer', document.getElementById('doorSpawningSound_value').value, 'doorSpawningSoundFormGroup')" data-toggle="tooltip" data-placement="top" title="Press to make sure audio track exists and is the one you were expecting.">Preview</button>
-				  </span>
-				  </div>
-				</div>
-				<div id="doorSpawningSoundPlayerDiv" style="text-align:center">
-					<audio id="doorSpawningSoundPlayer" controls="controls" data-toggle="tooltip" data-placement="top" title="Listen to make sure audio track exists and is the one you were expecting.">
-					  <source id="doorSpawningSoundSource" src=""></source>
-					  Your browser does not support the audio format.
-					</audio>
-				</div>
-			</div>
+						<div id="videoInfo" >
+							<h6 data-toggle="tooltip" data-placement="left" title="Enter the URL to where the video file has been uploaded. Relative paths also supported."> Video URL:</h6>
+							  <b>Required Specs:</b>
+							  <table class="techSpecs">
+							  <tr><td>Video Codec: </td><td>H.264 (*.mp4)</td></tr>
+							  <tr><td>Video Format Settings: </td><td>Web Optimized & Align A/V Start</td></tr>
+							  <tr><td>Video Resolution (max): </td><td>3840x1920</td></tr>
+							  <tr><td>Video Bitrate (max): </td><td>10500 kbps</td></tr>
+							  <tr><td>Video FPS (max): </td><td>30fps</td></tr>
+							  <tr><td>Audio Codec: </td><td>AAC (160 kbps)</td></tr>
+							  </table>
+							  <div id="videoFormGroup" class="form-group">
+							  
+								<div class="input-group">
+								  <input id="videoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('videoURL_value').value, 'videoFormGroup');" placeholder="Video URL starting with https:// & should be *.mp4" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 video is hosted. (starts with https:// & should be *.mp4) (Relative paths also supported)" >
+								  <span class="input-group-btn">
+									<button class="btn btn-default" type="button" onclick="previewVideo()" data-toggle="tooltip" data-placement="top" title="Press to make sure video file exists and is the one you were expecting.">Preview</button>
+								  </span>
+								</div><!-- /input-group -->
+							  </div><!-- /.form-group -->
+								<div class="thumbnail" style="height:340px;" data-toggle="tooltip" data-placement="left" title="Preview window so you can see if the URL is correct. Press the Preview button first.">
+									<video id="videoPreviewWindow" class="video-js" controls preload="auto" poster="" data-setup="{}" style="width:600px; height:280px;  margin: 0 auto;" src="">
+										<!-- <source src="https://vatelier.net/MyDemo/videosphere-showcase/city_halfres.mp4" type="video/mp4">  -->
+									</video>
+								</div>
 
-			<br>
-				<div id="sceneLocationContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Should the experience contain a scene location text above the portal door? If so enter the text, should not be more than 32 Chars <br><i>(Optional)</i>">
-					<h4>Scene Location Text:</h4>
+
+						</div>
+						<div id="photoInfo" style="display:none;">
+
+							<h6 data-toggle="tooltip" data-placement="left" title="Enter the URL to where the image file has been uploaded. Relative paths also supported.Relative paths also supported.">Photo URL:</h6>
+							  <div id="photoFormGroup" class="form-group">
+								<div class="input-group">
+								  <input id="photoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('photoURL_value').value, 'photoFormGroup');" placeholder="Image URL starting with https://" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 image is hosted. (starts with https://) (Relative paths also supported)">
+								  <span class="input-group-btn">
+									<button class="btn btn-default" type="button" onclick="previewImage()" data-toggle="tooltip" data-placement="top" title="Press to make sure image exists and is the one you were expecting.">Preview</button>
+								  </span>
+								</div><!-- /input-group -->
+							  </div><!-- /.form-group -->
+
+								  <a class="thumbnail" href="#" data-toggle="tooltip" data-placement="left" title="Preview window so you can see if the URL is correct. Press the Preview button first.">
+									<img id="photoPreviewWindow" alt="Preview Window: Recommended resolution no less than 3840 x 2160 (4k)" style="height: 330px; width: 500px; display: block;" src="#" data-holder-rendered="true">
+								  </a>
+
+						</div>
+				</div>
+				<br>
+			<div id="remainingSettings">
+
+				<div id="narrativeContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Does the experience contain a separate narrative audio track? Supported Format: mp3  Relative paths also supported.<br><i>(Optional)</i>">
+					<h4>Narrative Audio Track:</h4>
 					<!-- switch -->
-						<span class="mrl" onclick="document.getElementById('sceneLocationText_value').disabled = !document.getElementById('sceneLocation_value').checked;">
-							<input type="checkbox" checked data-toggle="switch" id="sceneLocation_value" title="Show scene location text above door? If so enter text in field below."/>
-						</span> Show Scene Location Text?
-					<!-- end switch -->
-						<br><br>
-					<div class="form-group">
-
-					  <input id="sceneLocationText_value" type="text" class="form-control" placeholder="Text to be shown above the door. No more than 32 Chars." data-toggle="tooltip" data-placement="top" title="Text to be shown above the door. No more than 32 Chars.">
+							<span class="mrl" onclick="document.getElementById('narrative_value').disabled = !document.getElementById('showNarrativeAudioButton_value').checked; document.getElementById('audioPreview').disabled = !document.getElementById('showNarrativeAudioButton_value').checked;">
+								<input type="checkbox" checked data-toggle="switch" id="showNarrativeAudioButton_value" title=""/>
+							</span> Does the experience contain a separate narrative audio track?
+						<!-- end switch -->
+							<br><br>
+						<b>Required Specs:</b>
+							  <table class="techSpecs">
+							  <tr><td>Audio Codec: </td><td>mp3</td></tr>
+							  <tr><td>Audio Bitrate (recommended): </td><td> 70 - 100kbps</td></tr>
+							  </table>
+						<div id="audioFormGroup" class="form-group">
+					  <div class="input-group">
+					  <input id="narrative_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('narrative_value').value, 'audioFormGroup');" placeholder="Audio URL starting with https:// & should be *.mp3" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your mp3 file is hosted. (starts with https://) & should be *.mp3 (Relative paths also supported)">
+					  <span class="input-group-btn">
+						<button id="audioPreview" class="btn btn-default" type="button" onclick="previewAudio('audioPlayer', document.getElementById('narrative_value').value, 'audioFormGroup')" data-toggle="tooltip" data-placement="top" title="Press to make sure audio track exists and is the one you were expecting.">Preview</button>
+					  </span>
+					  </div>
+					</div>
+					<div id="audioPlayerDiv" style="text-align:center">
+						<audio id="audioPlayer" controls="controls" data-toggle="tooltip" data-placement="top" title="Listen to make sure audio track exists and is the one you were expecting.">
+						  <source id="audioSource" src=""></source>
+						  Your browser does not support the audio format.
+						</audio>
 					</div>
 				</div>
 				<br>
-				<div id="infoLinkContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="URL that the Info & Share buttons link to. If disabled Share button shares the experience URL <br><i>(Optional)</i>">
-					<h4>Info & Share Buttons URL:</h4>
+
+				<div id="doorSpawningSoundContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Should the experience play a sound when spawning the door? Supported Format: mp3 Relative paths also supported.<br><i>(Optional)</i>">
+					<h4>Door Spawning Audio:</h4>
 					<!-- switch -->
-						<span class="mrl" onclick="document.getElementById('infoLink_value').disabled = !document.getElementById('showInfoButton_value').checked;">
-							<input type="checkbox" checked data-toggle="switch" id="showInfoButton_value" title=""/>
-						</span> Add info button sending user to an external URL? Note: Required for Share link, else uses experience URL!
-					<!-- end switch -->
-					<br><br>
-					<div id="infoLinkFormGroup" class="form-group">
-					  <input id="infoLink_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('infoLink_value').value, 'infoLinkFormGroup');" placeholder="URL that the Info & Share buttons link to. Should start with https://" data-toggle="tooltip" data-placement="top" title="URL that the Info & Share buttons link to. Should start with https://">
+							<span class="mrl" onclick="document.getElementById('doorSpawningSound_value').disabled = !document.getElementById('containsDoorSpawningSound_value').checked; document.getElementById('doorSpawningSoundPreview').disabled = !document.getElementById('containsDoorSpawningSound_value').checked;">
+								<input type="checkbox" checked data-toggle="switch" id="containsDoorSpawningSound_value" title=""/>
+							</span> Should the experience play a sound when spawning the door?
+						<!-- end switch -->
+							<br><br>
+					<div id="doorSpawningSoundFormGroup" class="form-group">
+					  <div class="input-group">
+					  <input id="doorSpawningSound_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('doorSpawningSound_value').value, 'doorSpawningSoundFormGroup');" placeholder="Audio URL starting with https:// & should be *.mp3" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your mp3 file is hosted. (starts with https://) & should be *.mp3 (Relative paths also supported)">
+					  <span class="input-group-btn">
+						<button id="doorSpawningSoundPreview" class="btn btn-default" type="button" onclick="previewAudio('doorSpawningSoundPlayer', document.getElementById('doorSpawningSound_value').value, 'doorSpawningSoundFormGroup')" data-toggle="tooltip" data-placement="top" title="Press to make sure audio track exists and is the one you were expecting.">Preview</button>
+					  </span>
+					  </div>
+					</div>
+					<div id="doorSpawningSoundPlayerDiv" style="text-align:center">
+						<audio id="doorSpawningSoundPlayer" controls="controls" data-toggle="tooltip" data-placement="top" title="Listen to make sure audio track exists and is the one you were expecting.">
+						  <source id="doorSpawningSoundSource" src=""></source>
+						  Your browser does not support the audio format.
+						</audio>
 					</div>
 				</div>
-				<br>
-				<div id="trackingContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Choose which tracking provider to configure <br><i>(Optional)</i>">
-					<h4>3rd Party Tracking:</h4>
-					<div class="btn-group">
-					  <button id="trackingProvider_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">Choose Tracking Provider</button>
-					  <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
-						<li data-toggle="tooltip" data-placement="left" data-html="true" title="Tealium uses the <b>Page Title</b> field as it's tracking identifier"><a onclick="setupTracking('Tealium'); document.getElementById('trackingParameter_value').disabled = false;">Tealium</a></li>
-						<li class="divider"></li>
-						<li data-toggle="tooltip" data-placement="left" title="No 3rd party tracking."><a onclick="setupTracking('None'); document.getElementById('trackingParameter_value').disabled = true;">None</a></li>
-					  </ul>
-					</div>
-					<h6 style="display:none;">Tracking Id:</h6>
-					  <input style="display:none;" id="trackingParameter_value" disabled type="text" class="form-control" placeholder="Tracking id for this AR campaign" data-toggle="tooltip" data-placement="top" data-html="true" title="Tracking id for this AR campaign">
-				</div>
-				<br>
 
+				<br>
+					<div id="sceneLocationContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="Should the experience contain a scene location text above the portal door? If so enter the text, should not be more than 32 Chars <br><i>(Optional)</i>">
+						<h4>Scene Location Text:</h4>
+						<!-- switch -->
+							<span class="mrl" onclick="document.getElementById('sceneLocationText_value').disabled = !document.getElementById('sceneLocation_value').checked;">
+								<input type="checkbox" checked data-toggle="switch" id="sceneLocation_value" title="Show scene location text above door? If so enter text in field below."/>
+							</span> Show Scene Location Text?
+						<!-- end switch -->
+							<br><br>
+						<div class="form-group">
+
+						  <input id="sceneLocationText_value" type="text" class="form-control" placeholder="Text to be shown above the door. No more than 32 Chars." data-toggle="tooltip" data-placement="top" title="Text to be shown above the door. No more than 32 Chars.">
+						</div>
+					</div>
+					<br>
+					<div id="infoLinkContainer" data-toggle="tooltip" data-html="true" data-placement="left" title="URL that the Info & Share buttons link to. If disabled Share button shares the experience URL <br><i>(Optional)</i>">
+						<h4>Info & Share Buttons URL:</h4>
+						<!-- switch -->
+							<span class="mrl" onclick="document.getElementById('infoLink_value').disabled = !document.getElementById('showInfoButton_value').checked;">
+								<input type="checkbox" checked data-toggle="switch" id="showInfoButton_value" title=""/>
+							</span> Add info button sending user to an external URL? Note: Required for Share link, else uses experience URL!
+						<!-- end switch -->
+						<br><br>
+						<div id="infoLinkFormGroup" class="form-group">
+						  <input id="infoLink_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('infoLink_value').value, 'infoLinkFormGroup');" placeholder="URL that the Info & Share buttons link to. Should start with https://" data-toggle="tooltip" data-placement="top" title="URL that the Info & Share buttons link to. Should start with https://">
+						</div>
+					</div>
+					<br>
+					<div id="trackingContainer" class="form-group" data-html="true" data-toggle="tooltip" data-placement="left" title="Choose which tracking provider to configure <br><i>(Optional)</i>">
+						<h4>3rd Party Tracking:</h4>
+						<div class="btn-group">
+						  <button id="trackingProvider_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">Choose Tracking Provider</button>
+						  <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
+							<li data-toggle="tooltip" data-placement="left" data-html="true" title="Tealium uses the <b>Page Title</b> field as it's tracking identifier"><a onclick="setupTracking('Tealium'); document.getElementById('trackingParameter_value').disabled = false;">Tealium</a></li>
+							<li class="divider"></li>
+							<li data-toggle="tooltip" data-placement="left" title="No 3rd party tracking."><a onclick="setupTracking('None'); document.getElementById('trackingParameter_value').disabled = true;">None</a></li>
+						  </ul>
+						</div>
+						<h6 style="display:none;">Tracking Id:</h6>
+						  <input style="display:none;" id="trackingParameter_value" disabled type="text" class="form-control" placeholder="Tracking id for this AR campaign" data-toggle="tooltip" data-placement="top" data-html="true" title="Tracking id for this AR campaign">
+					</div>
+					<br>
+
+			</div>
+
+			<div id="exportRow" class="row">
+				<button class="btn btn-hg btn-primary btn-reduce-on-xs btn-embossed" onclick="exportHTMLfile()" data-toggle="tooltip" data-placement="left" data-html="true" title="Press to create AR HTML file and choose where to save it. <br> Typically the filename should remain index.html" style="position:relative; margin-left:50%; left:-100px; ">
+				  Create HTML
+				</button>
+			</div>
 		</div>
-
-	<div id="exportRow" class="row">
-		<button class="btn btn-hg btn-primary btn-reduce-on-xs btn-embossed" onclick="exportHTMLfile()" data-toggle="tooltip" data-placement="left" data-html="true" title="Press to create AR HTML file and choose where to save it. <br> Typically the filename should remain index.html" style="position:relative; margin-left:50%; left:-100px; ">
-		  Create HTML
-		</button>
-	</div>
-	<div id="nextStepsContainer" class="row">
-	<h4>Next Steps:</h4>
-		<ol>
-			<li>Once you've saved your new AR experience HTML  file send it to your hosting contact to upload online.</li>
-			<br>
-			<li><i>If this is the first portal using this template then the webteam may not have the static assets. </i>
-			<br>Here is a zip of required static asset files to be placed with this HTML export: <a href="#"><i>to be attached here once assets are finalized</i></a>
-			<br><b>Note:</b> The zip is unique for each template but the same for each portal using that template.
-			</li>
-			<br>
-			<li>Ensure the domain <b>or subdomain</b> is entered under the 8thwall allowed domains settings. Located under <b>Project Dashboard -> Domains -> Connect a domain</b> <a href="#" onclick="overlayOn('connectedDomains')" data-toggle="tooltip" data-placement="right" data-html="true" title="Click for example screenshot."> ?</a>
-			<br>
-			Select: <b>I am hosting this project myself</b> then enter the domain the files will be placed on. <br>If it's a subdomain: eg: https://static.up.welt.de then it must also be entered.<a href="#" onclick="overlayOn('connectedDomainsSettings')" data-toggle="tooltip" data-placement="right" data-html="true" title="Click for example screenshot."> ?</a>
-			</li>
-			<br>
-			<li>Get the QR code for your project by opening the portal URL with a desktop browser.</li>
-			</br>
-		</ol>
-	</div>
-	</div>
+		</div>
+		<br>
+		<div id="nextStepsContainer" class="row">
+			<div class="center-col" >
+				<h2 style="text-align:center">Next Steps</h2>
+					<ol>
+						<li>Once you've saved your new AR experience HTML  file send it to your hosting contact to upload online.</li>
+						<br>
+						<li><i>If this is the first portal using this template then the webteam may not have the static assets. </i>
+						<br>Here is a zip of required static asset files to be placed with this HTML export: <a href="#"><i>to be attached here once assets are finalized</i></a>
+						<br><b>Note:</b> The zip is unique for each template but the same for each portal using that template.
+						</li>
+						<br>
+						<li>Ensure the domain <b>or subdomain</b> is entered under the 8thwall allowed domains settings. Located under <b>Project Dashboard -> Domains -> Connect a domain</b> <a href="#" onclick="overlayOn('connectedDomains')" data-toggle="tooltip" data-placement="right" data-html="true" title="Click for example screenshot."> ?</a>
+						<br>
+						Select: <b>I am hosting this project myself</b> then enter the domain the files will be placed on. <br>If it's a subdomain: eg: https://static.up.welt.de then it must also be entered.<a href="#" onclick="overlayOn('connectedDomainsSettings')" data-toggle="tooltip" data-placement="right" data-html="true" title="Click for example screenshot."> ?</a>
+						</li>
+						<br>
+						<li>Get the QR code for your project by opening the portal URL with a desktop browser.</li>
+						</br>
+					</ol>
+			</div>
+		</div>
+	
 </div>
 <br>
 	<div id="versionContainer" class="container">
