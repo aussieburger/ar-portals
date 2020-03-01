@@ -182,10 +182,11 @@
 							  <tr><td>Video Resolution (max): </td><td>3840x1920</td></tr>
 							  <tr><td>Video Bitrate (max): </td><td>10500 kbps</td></tr>
 							  <tr><td>Video FPS (max): </td><td>30fps</td></tr>
-							  <tr><td>Audio Codec: </td><td>AAC (160 kbps)</td></tr>
+                <tr><td>Audio Codec: </td><td>AAC (110-160 kbps)</td></tr>
+                <tr><td>Audio Gain: </td><td>-10db (when narrator track included)</td></tr>
 							  </table>
 							  <div id="videoFormGroup" class="form-group">
-							  
+
 								<div class="input-group">
 								  <input id="videoURL_value" type="text" class="form-control" onfocusout="setStatus(document.getElementById('videoURL_value').value, 'videoFormGroup');" placeholder="Video URL starting with https:// & should be *.mp4" data-toggle="tooltip" data-placement="top" data-html="true" title="Enter in the <b>full URL</b> of where your 360 video is hosted. (starts with https:// & should be *.mp4) (Relative paths also supported)" >
 								  <span class="input-group-btn">
@@ -350,7 +351,7 @@
 					</ol>
 			</div>
 		</div>
-	
+
 </div>
 <br>
 	<div id="versionContainer" class="container">
@@ -407,7 +408,7 @@
 		function previewVideo() {
 			//show player container
 			document.getElementById('videoPreviewWindowContainer').style.display = 'block';
-			
+
 			var videoPlayer = videojs('videoPreviewWindow');
 
 			if (debug == '1') {
@@ -427,7 +428,7 @@
 		function previewImage() {
 			//show preview container
 			document.getElementById('photoPreviewWindowContainer').style.display = 'block';
-			
+
 			if (debug == '1') {
 				if (!document.getElementById("photoURL_value").value) {
 					document.getElementById("photoPreviewWindow").src = 'https://headgear.io/8thwall/assets/video_thumbnail.jpg'
