@@ -163,8 +163,8 @@
 						<input type="radio" name="optionsRadios" data-toggle="radio" value="" id="videoElsePhoto_valueb" required="" class="custom-radio"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
 						 360 Photo
 					  </label>
-					  <div class="btn-group" data-toggle="tooltip" data-placement="center" title="Initial Rotation of 360 content. Default is 90 Degrees">
-						  360 content initial rotation: &nbsp;&nbsp; <button id="360Rotation_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">90</button>
+					  <div class="btn-group" data-toggle="tooltip" data-placement="center" title="Initial Rotation of 360 content. Default is 270 Degrees">
+						  360 content initial rotation: &nbsp;&nbsp; <button id="360Rotation_value" class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">270</button>
 						  <ul class="dropdown-menu dropdown-menu-inverse" role="menu">
 							<li><a onclick="setRotation('0');">0</a></li>
 							<li><a onclick="setRotation('90');">90</a></li>
@@ -594,7 +594,7 @@ function clearForm() {
 	document.getElementById("trackingProvider_value").textContent = "Choose Tracking Provider";
 	document.getElementById("infoLink_value").value = "";
 	document.getElementById('infoLink_value').disabled = true
-	document.getElementById("360Rotation_value").textContent = "90";
+	document.getElementById("360Rotation_value").textContent = "270";
 	document.getElementById("showInfoButton_value").checked = false;
 	document.getElementById("showNarrativeAudioButton_value").checked = false;
 	document.getElementById("containsDoorSpawningSound_value").checked = false;
