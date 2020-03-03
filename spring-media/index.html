@@ -20,7 +20,7 @@
     <title>spring_AR HTML Templates</title>
 
 	<script>
-		var toolVersionVar = "1.0.4";
+		var toolVersionVar = "1.0.5";
 		var templateName_var = "";
 	</script>
 
@@ -337,7 +337,7 @@
 						<li>Once you've saved your new AR experience HTML  file send it to your hosting contact to upload online.</li>
 						<br>
 						<li><i>If this is the first portal using this template then the webteam may not have the static assets. </i>
-						<br>Here is a zip of required static asset files to be placed with this HTML export: <a href="#"><i>to be attached here once assets are finalized</i></a>
+						<br>Here is a zip of required static asset files to be placed with this HTML export: <a id="assetLink" href="#">WamS.AR.Portal.assets.zip</a>
 						<br><b>Note:</b> The zip is unique for each template but the same for each portal using that template.
 						</li>
 						<br>
@@ -634,6 +634,12 @@ var stringsToReplaceArray = [
 		showNarrativeAudioButton_var, //16: whether info button is included
 		containsDoorSpawningSound_var, //17 whether to play a door spawning sound
 		doorSpawningSound_var, //18: url for door spawning sound
+		containsDoorAnimation_var, //19: boolean for if inner doors are animated
+		wireFrameColor_var, //20: color for wireframe animation
+		innerDoorL_var, //21: model url for inner door left
+		innerDoorR_var, //22: model url for inner door right
+		innerDoorLWindow_var, //23: model url for inner door left window
+		innerDoorRWindow_var, //24: model url for inner door right window
 	];
 
 function setLookupValues() {
@@ -658,7 +664,13 @@ function setLookupValues() {
 	var showNarrativeAudioButton_var = "narrativeAudioExists = true"; //16: whether to show the narrative audio button
 	var containsDoorSpawningSound_var = "containsDoorSpawningSound = true"; //17 whether to play a door spawning sound
 	var doorSpawningSound_var = '"doorSpawningAudio" src="./assets/door_spawning_sound.mp3"'; //18: url for door spawning sound
-
+	var containsDoorAnimation_var = 'containsDoorAnimation = false'; //19: boolean for if inner doors are animated
+	var wireFrameColor_var = 'wireFrameColor = 0x00ff00'; //20: color for wireframe animation
+	var innerDoorL_var = 'id="door_l" src=""'; //21: model url for inner door left
+	var innerDoorR_var = 'id="door_r" src=""'; //22: model url for inner door right
+	var innerDoorLWindow_var = 'id="door_l_window" src=""'; //23: model url for inner door left window
+	var innerDoorRWindow_var = 'id="door_r_window" src=""'; //24: model url for inner door right window
+	
 	//update array
 	stringsToReplaceArray = [
 		appKey_var, //0: appkey
@@ -680,6 +692,12 @@ function setLookupValues() {
 		showNarrativeAudioButton_var, //16: whether info button is included
 		containsDoorSpawningSound_var, //17 whether to play a door spawning sound
 		doorSpawningSound_var, //18: url for door spawning sound
+		containsDoorAnimation_var, //19: boolean for if inner doors are animated
+		wireFrameColor_var, //20: color for wireframe animation
+		innerDoorL_var, //21: model url for inner door left
+		innerDoorR_var, //22: model url for inner door right
+		innerDoorLWindow_var, //23: model url for inner door left window
+		innerDoorRWindow_var, //24: model url for inner door right window
 	];
 
 }
@@ -740,7 +758,13 @@ function exportHTMLfile() {
 				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[16], showNarrativeAudioButton_var);
 				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[17], containsDoorSpawningSound_var);
 				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[18], doorSpawningSound_var);
-
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[19], containsDoorAnimation_var);
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[20], wireFrameColor_var);
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[21], innerDoorL_var);
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[22], innerDoorR_var);
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[23], innerDoorLWindow_var);
+				templateContents_replaced = templateContents_replaced.replace(stringsToReplaceArray[24], innerDoorRWindow_var);
+				
 				//save and download
 				save('index', templateContents_replaced);
 
@@ -852,6 +876,8 @@ function showTemplateFields(templateName) {
 		document.getElementById("sceneLocationContainer").style.display = "block";
 		document.getElementById("infoLinkContainer").style.display = "block";
 		document.getElementById("trackingContainer").style.display = "none";
+		//configure asset link
+		document.getElementById("assetLink").href = "https://ar-portals.headgear.io/spring-media/assets/WamS.AR.Portal.assets.zip";
 		//show parent content div
 		document.getElementById("templateContent").style.display = "block";
 	}
@@ -860,6 +886,15 @@ function showTemplateFields(templateName) {
 function templateDefaults(templateName) {
 
 	//uncommented vars are hardcoded and used to overwrite on export
+	if (templateName == "generic") {
+	//TO DO still missing a few values to reset here in case user opened a different template first!
+		containsDoorAnimation_var = 'containsDoorAnimation = false'; //19: boolean for if inner doors are animated
+		wireFrameColor_var = 'wireFrameColor = 0x00ff00'; //20: color for wireframe animation
+		innerDoorL_var = 'id="door_l" src=""'; //21: model url for inner door left
+		innerDoorR_var = 'id="door_r" src=""'; //22: model url for inner door right
+		innerDoorLWindow_var = 'id="door_l_window" src=""'; //23: model url for inner door left window
+		innerDoorRWindow_var = 'id="door_r_window" src=""'; //24: model url for inner door right window
+	}
 	if (templateName == "WAmS") {
 		//appKey_var = "gLMESoMSiCXZ8Ye4C7ooAO5bRn59zFpGIxN07SWCegxZNtScEoTCxh8S9SsXTB8xOevOSn"; //0: appkey
 		//videoURL_var = "./assets/360_video.mp4"; //1: video URL
@@ -880,6 +915,12 @@ function templateDefaults(templateName) {
 		//showNarrativeAudioButton_var = "narrativeAudioExists = true"; //16: whether to show the narrative audio button
 		containsDoorSpawningSound_var = "containsDoorSpawningSound = true"; //17 whether to play a door spawning sound
 		doorSpawningSound_var = '"doorSpawningAudio" src="./assets/door_spawning_sound.mp3"'; //18: url for door spawning sound
+		containsDoorAnimation_var = 'containsDoorAnimation = true'; //19: boolean for if inner doors are animated
+		wireFrameColor_var = 'wireFrameColor = 0x00507F'; //20: color for wireframe animation
+		innerDoorL_var = 'id="door_l" src="./assets/wams_door_L.glb"'; //21: model url for inner door left
+		innerDoorR_var = 'id="door_r" src="./assets/wams_door_R.glb"'; //22: model url for inner door right
+		innerDoorLWindow_var = 'id="door_l_window" src="./assets/wams_window_L.glb"'; //23: model url for inner door left window
+		innerDoorRWindow_var = 'id="door_r_window" src="./assets/wams_window_R.glb"'; //24: model url for inner door right window
 	}
 }
 

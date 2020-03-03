@@ -1,6 +1,6 @@
 //Do not replace the templateContents line at the top and bottom!
 
-var templateVersion = `0.9.4`;
+var templateVersion = `1.0.0`;
 
 var templateContents = `
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ var templateContents = `
 					app_name : ""
 				};
 				(function(a,b,c,d){
-					a='https://tags.tiqcdn.com/utag/axelspringer/welt/dev/utag.js';
+					a='https://tags.tiqcdn.com/utag/axelspringer/welt/prod/utag.js';
 					b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
 					a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
 				})();
@@ -45,25 +45,77 @@ var templateContents = `
 		
       <script async src="https://apps.8thwall.com/xrweb?appKey=gLMESoMSiCXZ8Ye4C7ooAO5bRn59zFpGIxN07SWCegxZNtScEoTCxh8S9SsXTB8xOevOSn&s=1"></script>
      <script src="https://cdn.8thwall.com/web/aframe/8frame-0.9.2.min.js"></script>
-      <script src="xrextras.js"></script>
+      <script src="xrextras_13.2.js"></script>
 
-      <!-- Copyright (c) 2019 8th Wall, Inc. -->
-<!-- head.html is optional; elements will be added to your html head before app.js is loaded. -->
+      <!-- Copyright (c) 2020 Headgear GmbH -->
 
-
- 
    <!-- meta tag for iOS video playback -->
    <meta name="apple-mobile-web-app-capable" content="yes">
    
-   <!-- script for pushing debug logs onto screen! -->
-   <script src="https://unpkg.com/aframe-log-component/dist/aframe-log-component.min.js"></script> 
    
    <script src="https://demos.jquerymobile.com/1.3.2/js/jquery.js"></script>
    <!-- currently not working: <script src="https://demos.jquerymobile.com/1.3.2/js/jquery.mobile-1.3.2.min.js"></script> -->
        
 	   <style>
 
-#tapScreenButton{
+@font-face {
+	font-family: 'MarkOT';
+	src: url('./assets/MarkOT-zthr8k5crh.glb') format('truetype');
+	
+}
+.prompt-box-8w * {
+    font-family: 'MarkOT' !important;
+}
+.prompt-button-8w {
+  
+}
+.button-primary-8w {
+
+
+  background-color: #00507F !important;
+}
+
+#infoText {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 200px;
+  text-align: center;
+  margin: auto;
+  padding-top: 150px;
+  width: 250px;
+  font-size: 24px;
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  z-index:11;
+   font-family: 'MarkOT';
+}
+
+#internetText {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: -50%;
+  right: 0;
+  height: 200px;
+  text-align: center;
+  margin: auto;
+  padding-top: 150px;
+  width: 250px;
+  font-size: 16px;
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  z-index:11;
+   font-family: 'MarkOT';
+}
+
+#outofboundsBackground{
     
   position: absolute;
   left: 0;
@@ -73,12 +125,22 @@ var templateContents = `
   height:100%;
   z-index:10;
 }
+#tapScreenButton{
+    
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height:100%;
+  z-index:20;
+}
 #uiContainer{
     position: fixed;
     width:100%;
     height: 31vmin;
 	bottom: -16vmin;
-	z-index: 11;
+	z-index: 30;
 	transition: all .3s ease-out;
 	float:left;
 	padding:0;
@@ -95,8 +157,8 @@ var templateContents = `
 	font-size: 15vmin;
 	font-weight: bolder;
 	color: white;
-	opacity: 0.3;
-	-webkit-text-stroke: 2px black;
+	opacity: 0.9;
+	-webkit-text-stroke: 1.5px black;
 	transition: all .3s ease-out;
 	transform: rotate(0deg);
 }
@@ -107,11 +169,11 @@ var templateContents = `
   padding:0;
   margin:0;
 }
- #shareButton {
+#shareButton {
  position: relative;
   width: 15vmin;
   height: 15vmin;
-  background-color: #003a5a;
+  background-color: #00507F;
   border-radius: 7.5vmin;
   transform: translateX(-50%);
   left: 50%;
@@ -123,7 +185,7 @@ var templateContents = `
   background-repeat: no-repeat;
   background-position: center center;
   pointer-events: auto;
-  background-image: url('./assets/share_icon_white-evkawljf07.png');
+  background-image: url('./assets/share_icon_white-dtpa4k5ir6.png');
   
 }
 
@@ -138,7 +200,7 @@ var templateContents = `
  position: relative;
   width: 15vmin;
   height: 15vmin;
-  background-color: #003a5a;
+  background-color: #00507F;
   border-radius: 7.5vmin;
   transform: translateX(-50%);
   left: 50%;
@@ -149,7 +211,7 @@ var templateContents = `
   background-repeat: no-repeat;
   background-position: center center;
   pointer-events: auto;
-  background-image: url('./assets/speaking_icon_white-1wcsm890ik.png');
+  background-image: url('./assets/speaking_icon_white-yhdqgbt9rh.png');
   
 }
 
@@ -164,13 +226,13 @@ var templateContents = `
  position: relative;
   width: 15vmin;
   height: 15vmin;
-  background-color: #003a5a;
+  background-color: #00507F;
   border-radius: 7.5vmin;
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center center;
   pointer-events: auto;
-  background-image: url('./assets/info_icon_white-b2f8k1eb95.png');
+  background-image: url('./assets/info_icon_white-c9i9c69di6.png');
   transform: translateX(-50%);
   left: 50%;
   display: flex;
@@ -183,14 +245,42 @@ var templateContents = `
 }
    </style>
       
-    </head>
-    <body>
+</head>
+<body>
 	<script>
-	// Copyright (c) 2020 Headgear
-//
-// app.js is the main entry point for your 8th Wall app. Code here will execute after head.html
-// is loaded, and before body.html is loaded.
+// Copyright (c) 2020 Headgear
+
   
+  
+// iOS motion sensors text override and video preload workaround
+var in_dom = false;
+var observer = new MutationObserver(function(mutations) {
+    if (document.querySelector('.prompt-box-8w')) {
+        if (!in_dom) {
+            document.querySelector('.prompt-box-8w p').innerHTML = "<strong>Aktivieren Sie den Zugriff auf die Bewegungssensoren</strong>";
+            document.querySelector('.prompt-button-8w').innerHTML = "Abbrechen";
+            document.querySelector('.button-primary-8w').innerHTML = "Fortsetzen";
+        }
+        in_dom = true;
+        
+        $(".button-primary-8w").on("click", function() {
+               if (videoElsePhoto){
+                       //stop video
+                       var videoPlayer = document.querySelector('#videosphere').components.material.material.map.image;
+                       if (videoPlayer) { 
+                            videoPlayer.play();
+                            videoPlayer.pause();
+                            console.log('video workaround')
+                       } else { console.log('no video found') }
+                    }
+        });
+    } else if (in_dom) {
+        in_dom = false;
+        observer.disconnect();
+    }
+});
+observer.observe(document.body, {childList: true});
+// iOS motion sensors text override end
 
 //*****Global Variables START**********************************      
     
@@ -198,9 +288,9 @@ var templateContents = `
     var debugOnVar = false //to use log with the command: AFRAME.log('test')
 
     //text strings
-    var INFO_TEXT1 = "Tippen Sie auf den Bildschirm, um die Tür zu platzieren"  //initial text shown
-    var INFO_TEXT2 = "Gehe durch das Tor, um das Erlebnis zu starten." //text shown after placement
-    var INFO_TEXT3 = "Einen Schritt zurück und es geht weiter, order tippen Sie zum Zurücksetzen auf den Bildschirm" //text shown when walking out of balcony
+    var INFO_TEXT1 = "Tippen Sie auf den Bildschirm, um das Portal zu platzieren"  //initial text shown
+    var INFO_TEXT2 = "Gehen Sie durch das Portal, um das Erlebnis zu starten" //text shown after placement
+    var INFO_TEXT3 = "Machen Sie einen Schritt zurück in Richtung des Portals" //text shown when walking out of balcony
     var sceneLocationTextString = "Scene Location" //text to be shown above the door
     
     
@@ -209,15 +299,17 @@ var templateContents = `
     var showBalcony = true   //true means balcony is shown
     var videoElsePhoto = true //true means video not photo
     var sceneLocationText = false //true means text will be shown above the door signifying the location
-    var doorTriggerDistance = 7.5  //camera starts around a value of 9. Where a value of 0 = at the door
+    var doorTriggerDistance = 6  //camera starts around a value of 9. Where a value of 0 = at the door
     var containsDoorAnimation = false //whether door animation exists
     var checkForBalcony = false //if true does a check to see if user has walked off balcony or not (out of bounds) - Currently not used!
-    var BalconyWidth = 8 //distance to check if user is out of the balcony in the side (X) direction
-    var BalconyDepth = 20  //distance to check if user is out of the balcony in the forward (depth) direction
-    var infoURL = "https://headgear.io" //URL that info page opens
+    var BalconyWidth = 14 //distance to check if user is out of the balcony in the side (X) direction
+    var BalconyDepth = 26  //distance to check if user is out of the balcony in the forward (depth) direction
+    var infoURL = window.location.href //URL that info page and share button uses
     var narrativeAudioExists = true // set via template default should be left true
     var infoLinkExists = true // set via template default should be left true
     var containsDoorSpawningSound = true // whether to play a door spawning sound - set via template default should be left true
+    var wireFrameColor = 0x00ff00
+    var modelScaleFactor = 2.6 //you may need to adjust abovePortalHiderWall position Y if you change this
 
     //global logic vars ** DO NOT CHANGE THESE
     var isInPortalSpace = false
@@ -329,6 +421,8 @@ var templateContents = `
           this.walls = document.getElementById('hider-walls')
           this.portalWall = document.getElementById('portal-return-opening')
           this.portalWorld = document.getElementById('portal-world')
+          this.video = document.getElementById('videosphere')
+          this.photo = document.getElementById('photosphere')
           
           //get sceneHolder distance
           this.sceneholder = document.getElementById('scene-holder')
@@ -340,7 +434,7 @@ var templateContents = `
           intialCameraPositionY = this.camera.getAttribute('position').y
           intialCameraPositionZ = this.camera.getAttribute('position').z 
 
-          tapScreen = document.getElementById('tapScreenButton')
+          outofboundsBackground = document.getElementById('outofboundsBackground')
           
           //XR8.XrController.configure({disableWorldTracking: false}) //does not work with 8th wall currently
           
@@ -368,7 +462,7 @@ var templateContents = `
                   document.getElementById('doorEntity').setAttribute('visible', 'true')
                   document.getElementById('balcony').setAttribute('visible', 'true')
               }
-              tapScreen.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+              outofboundsBackground.style.backgroundColor = 'rgba(0, 0, 0, 0)';
               resetSceneTriggered = false
           }
           
@@ -380,19 +474,23 @@ var templateContents = `
                 portalCameraPositionY = this.camera.getAttribute('position').y
                 portalCameraPositionZ = this.camera.getAttribute('position').z
                 
+                //model height (used in mode 2)
+                modelPositionFirstIntoPortalY = this.sceneholder.getAttribute('position').y
+                
                 //AFRAME.log(this.camera.object3D.rotation)
-                rotationy = this.camera.getAttribute('rotation').y + 180
-                if ((rotationy - 180) < 0) { 
-                    rotationy = (rotationy - 180) + 360 
-                } else {
-                  rotationy = rotationy - 180
-                }
-                AFRAME.log('Into portal: opposite rotation = ' + rotationy)
+                //rotationy = this.camera.getAttribute('rotation').y + 180
+                //if ((rotationy - 180) < 0) { 
+                //    rotationy = (rotationy - 180) + 360 
+                //} else {
+                //  rotationy = rotationy - 180
+                //}
+                //AFRAME.log('Into portal: opposite rotation = ' + rotationy)
                 //getWorldPosition(position); .getAttribute('rotation')
                 
                 //hide stuff:
                 //through door hide info text
-                document.getElementById('infoText').object3D.visible = false
+                //document.getElementById('infoText').object3D.visible = false
+                document.getElementById('infoText').textContent = ""
                 //through door hide arrow
                 document.getElementById('arrow-image-holder').setAttribute('visible', 'false')
                 
@@ -405,8 +503,8 @@ var templateContents = `
               
               //play narrative sound
               if (playNarrativeAudio && narrativeAudioExists) {
-                var entity = document.querySelector('#soundcue')
-                entity.components.sound.playSound();
+                var soundEntity = document.querySelector('#soundcue')
+                soundEntity.components.sound.playSound();
               }  
               switch (trackingProvider) {
       				  case "Tealium":
@@ -420,33 +518,47 @@ var templateContents = `
           
         //else check if user has walked out of portal
           } else if (isInPortalSpace && isOutside) {
-              AFRAME.log('walked out of portal')
+              //AFRAME.log('walked out of portal')
               isInPortalSpace = false
               isOutside = true
-              //reset narrative audio
-              document.querySelector('#soundcue').components.sound.stopSound()
               //hide door when walking out
               document.getElementById('boxInFrontOfDoor').setAttribute('visible', 'true')
               document.getElementById('boxInFrontOfDoor').setAttribute('scale', {x:20, y:76, z:15})
-              
               document.getElementById('doorEntity').setAttribute('visible', 'false')
               document.getElementById('balcony').setAttribute('visible', 'false')
-              document.getElementById('videosphere').setAttribute('visible', 'false')
-              document.getElementById('photosphere').setAttribute('visible', 'false')
+              this.video.object3D.visible = false
+              this.photo.object3D.visible = false
+              
+              //check if video is playing then stop it
+              if (videoElsePhoto){
+                 //stop video
+                 var videoPlayer = document.querySelector('#videosphere').components.material.material.map.image;
+                 if (videoPlayer) { 
+                      videoPlayer.pause();
+                      console.log('stopping video')
+                 }
+              }
+              //reset narrative audio
+              if (playNarrativeAudio && narrativeAudioExists) {
+                var soundEntity = document.querySelector('#soundcue')
+                soundEntity.components.sound.stopSound();
+              }  
+
+              
               //set info text1
-              document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT1)
-              document.getElementById('infoText').object3D.visible = true
+              document.getElementById('infoText').textContent = INFO_TEXT1
+                
               doorVisible = false
           }
           
-        //Mode1: reappear door check if opposite rotation and user in portal
+        //Mode1: reappear door check if opposite rotation and user in portal - not used could be removed
              if ((Math.abs(this.camera.getAttribute('rotation').y + 180 - rotationy) < 60 ) && isInPortalSpace && !alreadyMoved && hideDoorOnWalkthrough){
                 alreadyMoved = true
-                AFRAME.log('reshow')
+                //AFRAME.log('reshow')
                 //AFRAME.log('camera position = ' + this.camera.getAttribute('position').x + ', ' + (this.camera.getAttribute('position').y - intialCameraPositionY) + ', z - 10' + (this.camera.getAttribute('position').z + 10))
                 //set new Y
-                if ((this.camera.getAttribute('position').y - intialCameraPositionY) < -1) {
-                   newY = -1
+                if ((this.camera.getAttribute('position').y - intialCameraPositionY) < -3) {
+                   newY = -3 //this value is taken from the scenelocation Y
                 } else {
                   newY = this.camera.getAttribute('position').y - intialCameraPositionY
                 }
@@ -471,7 +583,7 @@ var templateContents = `
             } 
             else if (((Math.abs(this.camera.getAttribute('rotation').y + 180 - rotationy) > 120 ) && isInPortalSpace && alreadyMoved) || ((Math.abs(this.camera.getAttribute('rotation').y + 180 - rotationy) > 60 ) && !isInPortalSpace && alreadyMoved)) { //hide door again 2nd case for catching edge case of out of portal bug
                 alreadyMoved = false
-                AFRAME.log('hide')
+                //AFRAME.log('hide')
                 document.getElementById('doorEntity').setAttribute('visible', 'false')
                 document.getElementById('balcony').setAttribute('visible', 'false')
                 this.portalWall.object3D.visible = false
@@ -487,12 +599,14 @@ var templateContents = `
                 } else if ((this.camera.getAttribute('position').x - portalCameraPositionX) < -BalconyWidth) {
                     newX = this.camera.getAttribute('position').x + BalconyWidth
                     if (!outofBoundsX) {
-                      AFRAME.log('out of balcony X');
+                      //AFRAME.log('out of balcony X');
                       outofBoundsX = true
                       //change text / reshow
-                      document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT3)
-                      document.getElementById('infoText').object3D.visible = true
-                      tapScreen.style.backgroundColor = 'rgba(0, 0, 0, 0.6)'
+                      //document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT3)
+                      //document.getElementById('infoText').object3D.visible = true
+                      document.getElementById('infoText').textContent = INFO_TEXT3
+                      
+                      outofboundsBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.6)'
                   }
                 } else {
                     newX = this.sceneholder.getAttribute('position').x
@@ -500,8 +614,10 @@ var templateContents = `
                       AFRAME.log('in balcony again X');
                       outofBoundsX = false
                       //hide out of bounds text
-                      document.getElementById('infoText').object3D.visible = false
-                      tapScreen.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+                      //document.getElementById('infoText').object3D.visible = false
+                      document.getElementById('infoText').textContent = ""
+                      
+                      outofboundsBackground.style.backgroundColor = 'rgba(0, 0, 0, 0)'
                     }
                 }
                 //Check for correct Z (distance from camera)
@@ -509,35 +625,42 @@ var templateContents = `
                   //AFRAME.log('stuck on z: ' + (this.camera.getAttribute('position').z - portalCameraPositionZ))
                   newZ = this.camera.getAttribute('position').z + BalconyDepth
                   if (!outofBoundsY) {
-                      AFRAME.log('out of balcony Y');
+                      //AFRAME.log('out of balcony Y');
                       outofBoundsY = true
                       //change text / reshow
-                      document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT3)
-                      document.getElementById('infoText').object3D.visible = true
-                      tapScreen.style.backgroundColor = 'rgba(0, 0, 0, 0.6)'
+                      //document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT3)
+                      //document.getElementById('infoText').object3D.visible = true
+                      document.getElementById('infoText').textContent = INFO_TEXT3
+                      
+                      outofboundsBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.6)'
                   }
                 } else {
                   newZ = this.sceneholder.getAttribute('position').z
                   //this.sceneholder.setAttribute('position', {x: this.camera.getAttribute('position').x, y: -1, z: this.sceneholder.getAttribute('position').z})  
                   if (outofBoundsY) {
-                      AFRAME.log('in balcony again Y');
+                      //AFRAME.log('in balcony again Y');
                       outofBoundsY = false
                       //hide out of bounds text
-                      document.getElementById('infoText').object3D.visible = false
-                      tapScreen.style.backgroundColor = 'rgba(0, 0, 0, 0)'
+                      //document.getElementById('infoText').object3D.visible = false
+                      document.getElementById('infoText').textContent = ""
+                      
+                      outofboundsBackground.style.backgroundColor = 'rgba(0, 0, 0, 0)'
                   }
                 }
                 
-                //check for Y
-                if ((this.camera.getAttribute('position').y - intialCameraPositionY) < -1) { // this.sceneholder.getAttribute('position').y
-                    AFRAME.log('Y less than -1: ' + (this.camera.getAttribute('position').y))
-                    newY = -1
+                //check for Y using modelPositionFirstIntoPortalY
+                if ((this.camera.getAttribute('position').y) < 1) { // this.sceneholder.getAttribute('position').y
+                 //   AFRAME.log('Y less than -1: ' + (this.camera.getAttribute('position').y))
+                    newY = modelPositionFirstIntoPortalY
                 //    AFRAME.log('Y great than 10: ' + (this.camera.getAttribute('position').y))
                 //    newY = this.camera.getAttribute('position').y - 12his.camera.getAttribute('position').y - 10, z: this.sceneholder.getAttribute('position').z})  
-                } else {
-                    //AFRAME.log('Y ' + (this.camera.getAttribute('position').y))
-                   newY = this.camera.getAttribute('position').y - intialCameraPositionY  
-                } 
+                } else if ((this.camera.getAttribute('position').y - modelPositionFirstIntoPortalY) > 20) {
+                  //  AFRAME.log('Y greater than ' + (this.camera.getAttribute('position').y))
+                   newY = (this.camera.getAttribute('position').y - modelPositionFirstIntoPortalY) - this.camera.getAttribute('position').y
+                }  else {
+                 // AFRAME.log('Y in range ' + (this.camera.getAttribute('position').y))
+                  newY = modelPositionFirstIntoPortalY
+                }
                 //set resulting position
                 this.sceneholder.setAttribute('position', {x: newX, y: newY, z: newZ})  
   
@@ -570,7 +693,6 @@ var templateContents = `
 
           wasOutside = isOutside
           
-          
         }
       })
 
@@ -602,8 +724,8 @@ var templateContents = `
                     //    facing: {w: 0, x:0, y:0, z:0}
                     // })
                     camera.setAttribute('position', {x: 0, y: 12, z: 8})
-                    sceneHolder.setAttribute('position', {x: 0, y: -1, z: -10})
-                    AFRAME.log('scene-holder postion: x:' + sceneHolder.getAttribute('position').x + ', y:' + sceneHolder.getAttribute('position').y + ',z:' + sceneHolder.getAttribute('position').z)
+                    sceneHolder.setAttribute('position', {x: 0, y: -3, z: -15})
+                    //AFRAME.log('scene-holder postion: x:' + sceneHolder.getAttribute('position').x + ', y:' + sceneHolder.getAttribute('position').y + ',z:' + sceneHolder.getAttribute('position').z)
                     //this.sceneholder.setAttribute('position', {x: this.camera.getAttribute('position').x, y: -1, z: this.camera.getAttribute('position').z - 10})
                     resetSceneTriggered = true  //reseting some other vars in the portal ontick
                     
@@ -611,19 +733,20 @@ var templateContents = `
                     var soundEntity = document.querySelector('#soundcue')
                     soundEntity.components.sound.stopSound();
                     
-                    //check if video is playing yet
-                    if (videoElsePhoto){
-                      //play video
-                      var video = document.querySelector('#videosphere').components.material.material.map.image;
-                      if (!video) { return; }
-                      video.play();
-                     }
+                   // //check if video is playing yet
+                   // if (videoElsePhoto){
+                   //   //play video
+                   //   var video = document.querySelector('#videosphere').components.material.material.map.image;
+                   //   if (!video) { return; }
+                   //   video.play();
+                   //  }
                   }    
             })  //end tap screen eventhandler
           
       }
     });
 
+   
    //This handles starting the show door animation on a screen tap
     AFRAME.registerComponent('show-door-ani-on-tap', {
       init: function() {
@@ -633,19 +756,20 @@ var templateContents = `
                    
                   //Door & Balcony: material change
                   if (!isInPortalSpace || outofBoundsY || outofBoundsX) { 
-                    
+                        
+                        
                         //set wirefirame materials door:
-                          let el = document.getElementById('doorEntity');
-                          let mesh = el.getObject3D('mesh'); 
-                          if (!mesh){return;}
+                          let eldoor = document.getElementById('doorEntity');
+                          let meshDoor = eldoor.getObject3D('mesh'); 
+                          if (!meshDoor){return;}
                           //console.log(mesh);
-                          mesh.traverse(function(node){
+                          meshDoor.traverse(function(node){
                              if (node.isMesh){  
-                               let materialOriginalDoor = node.material
+                               //let materialOriginalDoor = node.material
                                node.material = new THREE.MeshStandardMaterial({
-                                  color : 0x00ff00,
+                                  color : wireFrameColor,
                                  wireframe : true,
-                                 emissive:  0x00ff00,
+                                 emissive:  wireFrameColor,
                                  emissiveIntensity: 10,
                                  opacity : 1
                                });
@@ -653,17 +777,17 @@ var templateContents = `
                           });
                           //set wireframe materials balcony:
                           if (showBalcony) {
-                              let el = document.getElementById('balcony');
-                                let mesh = el.getObject3D('mesh'); 
-                                if (!mesh){return;}
+                              let elbalcony = document.getElementById('balcony');
+                                let meshBalcony = elbalcony.getObject3D('mesh'); 
+                                if (!meshBalcony){return;}
                                 //console.log(mesh);
-                                mesh.traverse(function(node){
+                                meshBalcony.traverse(function(node){
                                    if (node.isMesh){  
-                                     let materialOriginalBalcony = node.material
+                                     //let materialOriginalBalcony = node.material
                                      node.material = new THREE.MeshStandardMaterial({
-                                        color : 0x00ff00,
+                                        color : wireFrameColor,
                                        wireframe : true,
-                                       emissive:  0x00ff00,
+                                       emissive:  wireFrameColor,
                                        emissiveIntensity: 10,
                                        opacity : 1
                                      });
@@ -671,33 +795,33 @@ var templateContents = `
                                 });        
                           }
                           if (containsDoorAnimation) {
-                                let el_L = document.getElementById('doorEntityL');
-                                let mesh_L = el_L.getObject3D('mesh'); 
-                                if (!mesh_L){return;}
+                                let eldoorL = document.getElementById('doorEntityL');
+                                let meshDoorL = eldoorL.getObject3D('mesh'); 
+                                if (!meshDoorL){return;}
                                 //console.log(mesh);
-                                mesh_L.traverse(function(node){
+                                meshDoorL.traverse(function(node){
                                    if (node.isMesh){  
-                                      let materialOriginalDoorL = node.material
+                                      //let materialOriginalDoorL = node.material
                                       node.material = new THREE.MeshStandardMaterial({
-                                        color : 0x00ff00,
+                                        color : wireFrameColor,
                                        wireframe : true,
-                                       emissive:  0x00ff00,
+                                       emissive:  wireFrameColor,
                                        emissiveIntensity: 10,
                                        opacity : 1
                                      });
                                    }
                                 });  
-                                let el_R = document.getElementById('doorEntityR');
-                                let mesh_R = el_R.getObject3D('mesh'); 
-                                if (!mesh_R){return;}
+                                let eldoorR = document.getElementById('doorEntityR');
+                                let meshDoorR = eldoorR.getObject3D('mesh'); 
+                                if (!meshDoorR){return;}
                                 //console.log(mesh);
-                                mesh_R.traverse(function(node){
+                                meshDoorR.traverse(function(node){
                                    if (node.isMesh){  
-                                      let materialOriginalDoorR = node.material
+                                      //let materialOriginalDoorR = node.material
                                       node.material = new THREE.MeshStandardMaterial({
-                                        color : 0x00ff00,
+                                        color : wireFrameColor,
                                        wireframe : true,
-                                       emissive:  0x00ff00,
+                                       emissive:  wireFrameColor,
                                        emissiveIntensity: 10,
                                        opacity : 1
                                      });
@@ -707,14 +831,30 @@ var templateContents = `
                           
                   
                         //hide info text and arrow while door is animating
-                        document.getElementById('infoText').object3D.visible = false
+                        //document.getElementById('infoText').object3D.visible = false
+                        document.getElementById('infoText').textContent = ""
                         document.getElementById('arrow-image-holder').setAttribute('visible', 'false')
+                        
+                        //hide video sphere
+                        if (videoElsePhoto) {
+                          if (document.getElementById('videosphere').object3D.visible) {
+                            document.getElementById('videosphere').object3D.visible = false;
+                          }
+                        }
+                        else { 
+                          if (document.getElementById('photosphere').object3D.visible) {
+                            document.getElementById('photosphere').object3D.visible = false;
+                          }
+                        }
+                        //hide balcony if we have inner doors else show if exists
+                        if (showBalcony && containsDoorAnimation) { document.getElementById('balcony').setAttribute('visible', 'false') }
+                        else if (showBalcony) { document.getElementById('balcony').setAttribute('visible', 'true') }
+
                         
                         //start animation of box hider
                         document.getElementById('boxInFrontOfDoor').emit('showportal')
                         document.getElementById('boxInFrontOfDoor').setAttribute('visible', 'true')
                         document.getElementById('doorEntity').setAttribute('visible', 'true')
-                        if (showBalcony) { document.getElementById('balcony').setAttribute('visible', 'true') }
                         if (containsDoorSpawningSound) { 
                           document.querySelector('#doorSpawnSoundCue').components.sound.stopSound()
                           document.querySelector('#doorSpawnSoundCue').components.sound.playSound() 
@@ -737,38 +877,39 @@ var templateContents = `
                  document.getElementById('boxInFrontOfDoor').setAttribute('visible', 'false')
                  
                   let eldoor = document.getElementById('doorEntity');
-                  let mesh = eldoor.getObject3D('mesh'); 
-                  if (!mesh){return;}
-                  mesh.traverse(function(node){
+                  let meshDoor = eldoor.getObject3D('mesh'); 
+                  if (!meshDoor){return;}
+                  meshDoor.traverse(function(node){
                     if (node.isMesh){  
                       node.material = materialOriginalDoor
                     }
                   });
             if (showBalcony) {
                   let elbalcony = document.getElementById('balcony');
-                  let mesh = elbalcony.getObject3D('mesh'); 
-                  if (!mesh){return;}
-                  mesh.traverse(function(node){
+                  let meshBalcony = elbalcony.getObject3D('mesh'); 
+                  if (!meshBalcony){return;}
+                  meshBalcony.traverse(function(node){
                      if (node.isMesh){  
                        node.material = materialOriginalBalcony
                      }
                   });
                 }
             if (containsDoorAnimation) {
-              let el_L = document.getElementById('doorEntityL');
-                  let mesh_L = el_L.getObject3D('mesh'); 
-                  if (!mesh_L){return;}
-                  mesh_L.traverse(function(node){
-                     if (node.isMesh){  
+              let elDoorL = document.getElementById('doorEntityL');
+              let meshDoorL = elDoorL.getObject3D('mesh'); 
+              if (!meshDoorL){return;}
+               meshDoorL.traverse(function(node){
+               if (node.isMesh){  
                        node.material = materialOriginalDoorL
-                       console.log("set l door material")
+                      // console.log("set l door material")
                      }
                   });
-                  let el_R = document.getElementById('doorEntityR');
-                  let mesh_R = el_R.getObject3D('mesh'); 
-                  if (!mesh_R){return;}
-                  mesh_R.traverse(function(node){
-                     if (node.isMesh){  
+               
+               let eldoorR = document.getElementById('doorEntityR');
+               let meshDoorR = eldoorR.getObject3D('mesh'); 
+               if (!meshDoorR){return;}
+               meshDoorR.traverse(function(node){
+               if (node.isMesh){  
                        node.material = materialOriginalDoorR
                      }
                   });
@@ -776,10 +917,36 @@ var templateContents = `
             doorVisible = true
             
             //change text / reshow
-            document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT2)
-            document.getElementById('infoText').object3D.visible = true
+            //document.getElementById('infoText').setAttribute('text', 'value: ' + INFO_TEXT2)
+            //document.getElementById('infoText').object3D.visible = true
+            document.getElementById('infoText').textContent = INFO_TEXT2
             //show arrow
             document.getElementById('arrow-image-holder').setAttribute('visible', 'true')
+            
+             //show video sphere
+           if (videoElsePhoto) {
+                          if (!document.getElementById('videosphere').object3D.visible) {
+                            document.getElementById('videosphere').object3D.visible = true;
+                          }
+                        }
+                        else { 
+                          if (!document.getElementById('photosphere').object3D.visible) {
+                            document.getElementById('photosphere').object3D.visible = true;
+                          }
+                        }
+            //show balcony
+            if (showBalcony && containsDoorAnimation) { document.getElementById('balcony').setAttribute('visible', 'true') }
+
+            
+             //check if video is playing yet
+              if (videoElsePhoto){
+                //play video
+                var video = document.querySelector('#videosphere').components.material.material.map.image;
+                if (!video) { return; }
+                video.play();
+               }
+            
+            //send tracking event
             switch (trackingProvider) {
       				case "Tealium":
       					utag.link({ "event_name" : "ar", "event_action": "user_placed_portal"});     
@@ -789,7 +956,6 @@ var templateContents = `
         }) 
       }
     })
-
  
       //This hides video/photo sphere inside the initial hider box in case user walks in there before spawning door
     AFRAME.registerComponent('hide-after-load', {         
@@ -801,18 +967,7 @@ var templateContents = `
             })
           }
      })
- 
-    //This shows video/photo sphere on tap
-    AFRAME.registerComponent('show-on-tap', {         
-          init: function () {
-            const tapScreen = document.getElementById('tapScreenButton')
-            //tap screen listener:
-            tapScreen.addEventListener('click', () => {
-                if (this.el == document.getElementById('videosphere')) { if (videoElsePhoto) {if (!this.el.object3D.visible) {this.el.object3D.visible = true;}}}
-                else if (this.el == document.getElementById('photosphere')) { if (!videoElsePhoto) {if (!this.el.object3D.visible) {this.el.object3D.visible = true;}}}
-            })
-          }
-     })
+
 
     //This shows models on tap
     AFRAME.registerComponent('scaleup-on-tap', {         
@@ -821,7 +976,7 @@ var templateContents = `
             //tap screen listener:
             tapScreen.addEventListener('click', () => {
                 if (!isInPortalSpace || outofBoundsY || outofBoundsX) {
-                  this.el.object3D.scale.set(2.3, 2.3, 2.3); //this causes a flash if use walks through door and spawns from other side - could be moved for this edge case
+                  this.el.object3D.scale.set(modelScaleFactor, modelScaleFactor, modelScaleFactor); //this causes a flash if use walks through door and spawns from other side - could be moved for this edge case
                 }
             })
           }
@@ -834,9 +989,9 @@ var templateContents = `
              // After gltf model has loaded,save it's default material
             let eldoor = document.getElementById('doorEntity');
             eldoor.addEventListener('model-loaded', function(ev){
-              let mesh = eldoor.getObject3D('mesh'); 
-              if (!mesh){return;}
-              mesh.traverse(function(node){
+              let meshDoor = eldoor.getObject3D('mesh'); 
+              if (!meshDoor){return;}
+              meshDoor.traverse(function(node){
                  if (node.isMesh){  
                    materialOriginalDoor = node.material
                    
@@ -846,9 +1001,9 @@ var templateContents = `
             if (showBalcony) {
                 elbalcony = document.getElementById('balcony');
                 elbalcony.addEventListener('model-loaded', function(ev){
-                  let mesh = elbalcony.getObject3D('mesh'); 
-                  if (!mesh){return;}
-                  mesh.traverse(function(node){
+                  let meshBalcony = elbalcony.getObject3D('mesh'); 
+                  if (!meshBalcony){return;}
+                  meshBalcony.traverse(function(node){
                      if (node.isMesh){  
                        materialOriginalBalcony = node.material
                        
@@ -856,9 +1011,32 @@ var templateContents = `
                   });
                 });
             }
+            if (containsDoorAnimation) {
+                eldoorL = document.getElementById('doorEntityL');
+                eldoorL.addEventListener('model-loaded', function(ev){
+                  let meshDoorL = eldoorL.getObject3D('mesh'); 
+                  if (!meshDoorL){return;}
+                  meshDoorL.traverse(function(node){
+                     if (node.isMesh){  
+                       materialOriginalDoorL = node.material
+                       
+                     }
+                  });
+                });
+                eldoorR = document.getElementById('doorEntityR');
+                eldoorR.addEventListener('model-loaded', function(ev){
+                  let meshDoorR = eldoorR.getObject3D('mesh'); 
+                  if (!meshDoorR){return;}
+                  meshDoorR.traverse(function(node){
+                     if (node.isMesh){  
+                       materialOriginalDoorR = node.material
+                       
+                     }
+                  });
+                });
+            }
           }
         });
-
 
         
 
@@ -873,7 +1051,9 @@ var templateContents = `
       // To set the initial info text
       AFRAME.registerComponent('set-initial-info-text', {
         init: function() {
-          this.el.setAttribute('text', 'value: ' + INFO_TEXT1)
+          //this.el.setAttribute('text', 'value: ' + INFO_TEXT1)
+          document.getElementById('infoText').textContent = INFO_TEXT1
+          document.getElementById('infoText').style.display = "block"; 
         },
       })
       
@@ -897,7 +1077,7 @@ var templateContents = `
         AFRAME.registerComponent('scenelocation_text_setter', {
         init: function() {
             if (sceneLocationText) {
-            this.el.setAttribute('text', 'align: center; value: ' + sceneLocationTextString + '; color: white; font: https://cdn.aframe.io/fonts/mozillavr.fnt;')
+            this.el.setAttribute('text', 'value: ' + sceneLocationTextString + ';')
           }
         },
          
@@ -1007,13 +1187,19 @@ var templateContents = `
 
 
 
-  //Video event handler not used yet
+  //Video event handler - used for bufferring checking
     AFRAME.registerComponent('videoeventhandler', {
       init: function() {
           if (videoElsePhoto){
             var video = this.el.components.material.material.map.image;
-           
-           console.log('video = ' + video)
+            console.log('video = ' + video)
+            
+            //set timer
+            var bufferCheckTimer = null;
+            var lastBufferProgressTime = 0;
+            var bufferCheckValue = 0;
+            var stopBufferTimerForGood = false;
+             
              //video event testing
                   video.addEventListener('waiting', (event) => {
               console.log('Video is waiting for more data.');
@@ -1032,13 +1218,51 @@ var templateContents = `
             });
             video.addEventListener('progress', (event) => {
               console.log('resource loading buffered = ' + Math.round(video.buffered.end(0)) + ' of ' + Math.round(video.seekable.end(0)) + ' secs');
+              if (Math.round(video.buffered.end(0)) == Math.round(video.seekable.end(0))) {
+                  stopBufferTimerForGood = true
+              }
+              if (!stopBufferTimerForGood) {
+                if (lastBufferProgressTime == Math.round(video.buffered.end(0))) {
+                  if (bufferCheckTimer == null) {
+                      console.log('set timer');
+                      bufferCheckValue = Math.round(video.buffered.end(0))
+                      bufferCheckTimer = setTimeout(showSlowBufferring(bufferCheckValue), 4000);
+                  }
+                } else if ((bufferCheckTimer != null) && (Math.round(video.buffered.end(0)) - bufferCheckValue > 2)) {
+                    console.log('calling hide buffering')
+                    hideSlowBufferring();
+                }
+                lastBufferProgressTime = Math.round(video.buffered.end(0))
+              } else if (bufferCheckTimer != null) {
+                    console.log('calling hide buffering for good')
+                    hideSlowBufferring();
+              }
+              
             });
             video.addEventListener('canplaythrough', (event) => {
               console.log('I think I can play through the entire ' + 'video without ever having to stop to buffer.');
+              stopBufferTimerForGood = true;
+              
             });
             video.addEventListener('loadeddata', (event) => {
               console.log('Yay! The readyState just increased to  ' + 'HAVE_CURRENT_DATA or greater for the first time.');
+
             });
+            
+             function showSlowBufferring(bufferCheckValue) {
+                 console.log('timer fired = ' + bufferCheckValue + ', against:' + Math.round(video.buffered.end(0)) + ', progress = ' + (Math.round(video.buffered.end(0)) - bufferCheckValue) / Math.round(video.seekable.end(0)) + ' % ')
+                 
+                 if ((Math.round(video.buffered.end(0)) - bufferCheckValue) < 2) {
+                   console.log('showing buffering text')
+                  document.getElementById("internetText").style.display = "block"; 
+                 }
+              }
+              function hideSlowBufferring() {
+                console.log('timercleared')
+                clearTimeout(bufferCheckTimer);
+                bufferCheckTimer = null;
+                document.getElementById("internetText").style.display = "none"; 
+              }
           }
       },
        
@@ -1155,7 +1379,7 @@ var templateContents = `
             const shareData = {
               title: 'AR Portal',
               text: '',
-              url: window.location.href ,
+              url: infoURL,
             }
             //share button
             $('#shareButton').on('click',function(){
@@ -1173,30 +1397,47 @@ var templateContents = `
             	  });
              }
              
-             //audio button for toggling narrative audio on/off
+  //audio button for toggling narrative audio on/off
              if (narrativeAudioExists) {
+                 var soundEntity = document.querySelector('#soundcue')
                  $('#audioButton').on('click',function(){
                 		playNarrativeAudio = !playNarrativeAudio
                 	  if (!playNarrativeAudio) {
                 	    //stop narrative audio
-                      document.querySelector('#soundcue').components.sound.stopSound()
-                      $('#audioButton').css("background-image", "url('./assets/speaking_off_icon_white-ociio8cdic.png')");
+                      $('#audioButton').css("background-image", "url('./assets/speaking_off_icon_white-lqygci2pia.png')");
+                       soundEntity.components.sound.stopSound();
                 	  } else {
-                	    $('#audioButton').css("background-image", "url('./assets/speaking_icon_white-1wcsm890ik.png')");
+                	    $('#audioButton').css("background-image", "url('./assets/speaking_icon_white-yhdqgbt9rh.png')");
                 	  }
                 	  if (isInPortalSpace && playNarrativeAudio) {
-                	    document.querySelector('#soundcue').components.sound.playSound() //turn sound back on
+                	    soundEntity.components.sound.playSound() //turn sound back on
                 	  }
                 });
             }
-            
       },
-       
     });
+    
+        
+  //This pauses the sound when minimized / screen turned off closed
+  $(window).focus(function() {
+      // Unpause when window gains focus
+      if (isInPortalSpace && playNarrativeAudio) {
+        var soundEntity = document.querySelector('#soundcue')
+        soundEntity.components.sound.playSound()
+      }
+      //console.log('gained focus')
+  }).blur(function() {
+      // stop when window loses focus - unable to pause as does not resume properly on iOS
+      if (isInPortalSpace && playNarrativeAudio) {
+        var soundEntity = document.querySelector('#soundcue')
+        soundEntity.components.sound.stopSound()
+        
+      }
+      //console.log('lost focus')
+  });
+  
 	</script>
 <!-- Copyright (c) 2020 Headgear -->
-
-<!-- body.html ; elements will be added to your html body after app.js is loaded. -->
 
  <!-- These HTML elements are used to show an UI laid over the scene -->
       <div id="tapScreenButton"></div>
@@ -1212,30 +1453,37 @@ var templateContents = `
         		<div id="infoButton"></div>
         	</div>  
       </div>
-
+      <div id="infoText"></div>
+      <div id="internetText" style="display:none;">Bitte überprüfen Sie Ihre Internetverbindung,<br>um die volle Erlebnisreise zu streamen.</div>
+      <div id="outofboundsBackground"></div>
+      
 <!-- aframe scene components -->
 
  <a-scene id="scene"
- light="defaultLightsEnabled: false"
-      xrweb
-      camera-status-check
-      touchscreen-handler
-      menu-interactions
-      aframe-log-component
-      photo-or-video
+ light="defaultLightsEnabled: true"
+ renderer="colorManagement: true;
+            sortObjects: false;"
       xrextras-almost-there
       xrextras-loading
       xrextras-runtime-error
-      door-seen-by-camera> <!-- stats -->
+      camera-status-check
+      touchscreen-handler
+      menu-interactions
+      photo-or-video
+      set-initial-info-text
+      xrweb> <!-- stats  -->
 
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
        
-       <!-- <a-asset-item id="doorModel" src="./assets/door230cm.glb"></a-asset-item>  -->
-        <a-asset-item id="doorModel" src="./assets/door_model.glb"></a-asset-item>
-        <a-asset-item id="balconyModel" src="./assets/balcony_model.glb"></a-asset-item>
+      <!--  <a-asset-item id="doorModel" src="./assets/door230cm.glb"></a-asset-item>   -->
+        <a-asset-item id="doorModel" src="./assets/door_model.glb"></a-asset-item> 
+        <a-asset-item id="balconyModel" src="./assets/balcony_model.glb"></a-asset-item> 
+
         <a-asset-item id="door_l" src=""></a-asset-item>
         <a-asset-item id="door_r" src=""></a-asset-item>
+        <a-asset-item id="door_l_window" src=""></a-asset-item>
+        <a-asset-item id="door_r_window" src=""></a-asset-item>
 
         <img id="arrowhead-image" src="./assets/arrowhead.png">
         
@@ -1261,7 +1509,7 @@ var templateContents = `
 
        <a-camera
         id="camera"
-        position="0 12 8"> <!-- changing the depth/height (y) and distance (z) of the camera results in a rescale of the door -->
+        position="0 12 12"> <!-- changing the depth/height (y) and distance (z) of the camera results in a rescale of the door -->
            
           <a-entity id="arrow-image-holder" visible="false" arrow-ani-setup>
              <a-image id="arrow1" position="0 0.025 -1" scale="0.1 0.2 0.1" src="#arrowhead-image" transparent="true" shader="flat" opacity="0.0" material="alphaTest: 0.5"
@@ -1288,7 +1536,7 @@ var templateContents = `
               </a-image >  
               -->
           </a-entity> 
-        <!-- markOT-qmqk8fajid.glb -->
+        <!-- markOT-qmqk8fajid.glb 
               <a-entity
             id="infoText"
             text="align: center; value: Tor platzieren; color: white; wrapCount: 22; font: ./assets/markOToutline-lp1gchdrai.glb;" 
@@ -1296,25 +1544,22 @@ var templateContents = `
             scale="0.5 0.5 0.5"
             set-initial-info-text>
           </a-entity>
-              
-           <!-- Logging to screen -->
-           <a-log position="1 2.5 -4" visibile="false" debugon></a-log>
-            
-      </a-camera>
+              -->
+     
+          </a-camera> 
 
-
-      <!-- main scene holder - used to push door further back on spawn. NOTE: changing Z results in having to move the camera Y up or down -->
-      <a-entity id="scene-holder" position="0 -1 -10" portal>
+ <!-- main scene holder - used to push door further back on spawn. NOTE: changing Z results in having to move the camera Y up or down -->
+      <a-entity id="scene-holder" position="0 -3 -50" portal>
         
-             <!-- light -->
-              <a-entity
-                light="type: directional;
-                       intensity: 0;
-                       target: #doorEntity;"
-                position="1 4.3 2.5">
-              </a-entity>
-              <a-light type="ambient" intensity="0"></a-light>
-        
+            <!--  Lights -->
+          <a-entity
+            light="type: directional;
+                   intensity: 1;
+                   target: #doorEntity;"
+            position="1 15 8"
+          ></a-entity>
+          <a-light type="ambient" intensity="1"></a-light>
+           
             <!-- box in front of door for ani in: wScale effected by width of door. yPosition & ySacle (set also in ani) effected by height of door 
             was: 
             scale="20 76 15"
@@ -1322,9 +1567,9 @@ var templateContents = `
             animation__showportal="property: scale; from: 20 76 15; to: 20 0 15; dur: 1900; startEvents: showportal; easing: linear "
             -->
               <a-box id="boxInFrontOfDoor"
-                scale="20 76 15"
-                position="0 38 0"
-                animation__showportal="property: scale; from: 20 76 15; to: 20 38 15; dur: 1900; startEvents: showportal; easing: linear "
+                scale="20 100 15"
+                position="0 50 0"
+                animation__showportal="property: scale; from: 20 100 15; to: 20 50 15; dur: 1900; startEvents: showportal; easing: linear "
                 hider-material
                 show-door-ani-over-logic></a-box>
         
@@ -1336,7 +1581,6 @@ var templateContents = `
                 scale="0 0 0"
                 gltf-model="#doorModel"
                 visible="true"
-                animation__scaleup="property: scale; from: 2.3 0 2.3; to: 2.3 2.3 2.3; dur: 2000; startEvents: scaleup; easing: linear "
                 save-orginal-model-material
                 show-door-ani-on-tap
                 scaleup-on-tap
@@ -1347,45 +1591,72 @@ var templateContents = `
                     scale="1 1 1"
                     gltf-model="#door_l"
                     visible="true"
-                    animation__open="property: position; to: -1.6 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
+                    animation__open="property: position; to: -1.75 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
                     animation__close="property: position; to: 0 0 0; dur: 1000; startEvents: close; easing: easeInOutQuad "
+                    transparent="false"
                      >
-                      </a-entity>
+                          <a-entity
+                        id="doorEntityLWindow"
+                        position="0 0 0"
+                        scale="1 1 1"
+                        gltf-model="#door_l_window"
+                        visible="true"
+                        animation__open="property: position; to: -1.75 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
+                        animation__close="property: position; to: 0 0 0; dur: 1000; startEvents: close; easing: easeInOutQuad "
+                        transparent="true"
+                        material="alphaTest: 0.5"
+                         ></a-entity>
+                    </a-entity>
                     <a-entity
                     id="doorEntityR"
                     position="0 0 0"
                     scale="1 1 1"
                     gltf-model="#door_r"
                     visible="true"
-                    animation__open="property: position; to: 1.6 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
+                    animation__open="property: position; to: 1.75 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
                     animation__close="property: position; to: 0 0 0; dur: 1000; startEvents: close; easing: easeInOutQuad "
+                    transparent="false"
                     >
-                      </a-entity>
+                       <a-entity
+                        id="doorEntityRWindow"
+                        position="0 0 0"
+                        scale="1 1 1"
+                        gltf-model="#door_r_window"
+                        visible="true"
+                        animation__open="property: position; to: 1.75 0 0; dur: 1000; startEvents: open; easing: easeInOutQuad "
+                        animation__close="property: position; to: 0 0 0; dur: 1000; startEvents: close; easing: easeInOutQuad "
+                        transparent="true"
+                        material="alphaTest: 0.5"
+                         ></a-entity>
+                    </a-entity>
                     <!-- text sign --> 
                     <!-- standard font: 
                     font: https://cdn.aframe.io/fonts/mozillavr.fnt;" 
                     -->
                     <!-- custom font: 
                     shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/play/Play-Regular.json;"
-                    from: https://github.com/etiennepinchon/aframe-fonts -->
-                    <a-entity id="sceneLocationTextHolder" scenelocation_textholder_controller>
+                    from: https://github.com/etiennepinchon/aframe-fonts 
+                    needs negate:true
+                    WamS font:  MarkOT-msdf-coe9cgoai6.glb 
+                    needs negate:false -->
+                   <a-entity id="sceneLocationTextHolder" scenelocation_textholder_controller>
                         <a-entity
                             id="sceneLocationTextEntity"
-                            text="align: center; value: Location; color: white; font: https://cdn.aframe.io/fonts/mozillavr.fnt;" 
-                            position="0 8 1.45"
-                            scale="12 12 12"
+                            text="align:center; value:Scene; negate:false; color:#FFFFFF; shader: msdf; font:./assets/MarkOT-msdf-rg8l0b460d.glb;"  
+                            position="0 8.8 0.675"
+                            scale="10 10 10"
                             scenelocation_text_setter
                             >
                         </a-entity>
-                        <!-- text shadow attempt -->
+                        <!-- text shadow attempt  
                         <a-entity
                             id="sceneLocationTextShadowEntity"
-                            text="align: center; value: Location; color: black; font: https://cdn.aframe.io/fonts/mozillavr.fnt;" 
-                            position="0 8 1.4"
-                            scale="12.1 12.1 12.1"
+                            text="align: center; value: Location; color: black; shader: msdf; negate: false; font:./assets/MarkOT-msdf-rg8l0b460d.glb;" 
+                            position="0 8.8 0.65"
+                            scale="10.1 10.1 10.1"
                             scenelocation_text_setter
                             >
-                        </a-entity>
+                        </a-entity> -->
                     </a-entity>
             </a-entity>
             
@@ -1395,17 +1666,16 @@ var templateContents = `
               <!-- above portal on front: wScale effected by width of door. yPosition & ySacle (set also in ani) effected by height of door  -->
               <a-box id="abovePortalHiderWall"
                 scale="10 100 1"
-                position="0 68 0"
-                animation__scaleup="property: scale; from: 10 135 1; to: 10 100 1; dur: 2000; startEvents: scaleup; easing: linear "
+                position="0 70 0"
                 hider-material></a-box>
               <!-- front left: wScale effected by width of door-->
               <a-box
-                scale="92 100 1"
+                scale="90 100 1"
                 position="-50 50 0"
                 hider-material></a-box>
               <!-- front right: wScale effected by width of door-->
               <a-box
-                scale="92 100 1"
+                scale="90 100 1"
                 position="50 50 0"
                 hider-material></a-box>
               <!-- back -->
@@ -1413,14 +1683,14 @@ var templateContents = `
                 scale="200 100 1"
                 position="0 50 200"
                 hider-material></a-box>
-              <!-- floor left -->
+              <!-- top -->
               <a-box
                 scale="200 1 201"
                 position="0 100 100"
                 hider-material></a-box>
-              <!-- floor right -->
+              <!-- floor  -->
               <a-box
-                scale="200 1 199"
+                scale="200 1 200"
                 position="0 -0.5 100"
                 hider-material></a-box>
               <!-- side left -->
@@ -1435,15 +1705,7 @@ var templateContents = `
                 hider-material></a-box>
             </a-entity>
             
-            <!-- return side: xScale effected by width of door. yScale and yHeight effected by door height -->
-            <a-entity id="portal-return-opening">
-              <a-plane
-                scale="7 17 1"
-                rotation="180 0 0"
-                position="0 8.5 0.5"
-                hider-material></a-plane>
-            </a-entity>
-      
+           
             <a-entity id="portal-contents"  >
               
               <!-- Balcony  -->
@@ -1452,20 +1714,26 @@ var templateContents = `
                 gltf-model="#balconyModel"
                 scale="0 0 0"
                 visible="true"
-                animation__scaleup="property: scale; from: 2.3 0 2.3; to: 2.3 2.3 2.3; dur: 2000; startEvents: scaleup; easing: easeOutQuad "
-                save-orginal-model-material
-                show-door-ani-on-tap
                 scaleup-on-tap></a-entity>
-                
-             <!-- video sphere 360 video - do not change default rotation required for template lookup -->
-           <a-videosphere id="videosphere" rotation="0 90 0" src="#video1"  videoeventhandler hide-after-load show-on-tap>
+            
+            <!-- return side: xScale effected by width of door. yScale and yHeight effected by door height -->
+            <a-entity id="portal-return-opening">
+              <a-plane
+                scale="11 25 1"
+                rotation="180 0 0"
+                position="0 10 0.5"
+                hider-material></a-plane>
+            </a-entity>    
+            
+           <!-- video sphere 360 video - do not change default rotation required for template lookup -->
+           <a-videosphere id="videosphere" rotation="0 90 0" src="#video1"  videoeventhandler hide-after-load>
            </a-videosphere>    
       
             <!-- sky background for 360 photo - do not change default rotation required for template lookup -->
-            <a-sky id="photosphere" rotation="0 90 0" src="#photo" photo-or-video hide-after-load show-on-tap></a-sky>
+            <a-sky id="photosphere" rotation="0 90 0" src="#photo" photo-or-video hide-after-load></a-sky>
             
             <!-- ground outside if separate should go here --> 
-              
+   
             </a-entity>
         
             <!-- ground inside portal --> 
@@ -1474,14 +1742,14 @@ var templateContents = `
              
             </a-entity>
             
-   
+        
             
             <!-- Audio tracks -->
             
             <!-- narrator audio track -->
             <a-entity id="soundcue" sound="src: #audio; autoplay: false;"></a-entity>
-            <a-entity id="doorSpawnSoundCue" sound="src: #doorSpawningAudio; autoplay: false;"></a-entity>
-            <a-entity id="doorOpenSoundCue" sound="src: #doorOpeningAudio; autoplay: false;"></a-entity>
+            <a-entity id="doorSpawnSoundCue" sound="src: #doorSpawningAudio; autoplay: false; volume:4;"></a-entity>
+            <a-entity id="doorOpenSoundCue" sound="src: #doorOpeningAudio; autoplay: false; volume:3;"></a-entity>
             
      </a-entity>
     
