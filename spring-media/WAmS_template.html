@@ -611,7 +611,7 @@ observer.observe(document.body, {childList: true});
                 } else {
                     newX = this.sceneholder.getAttribute('position').x
                     if (outofBoundsX) {
-                      AFRAME.log('in balcony again X');
+                      //AFRAME.log('in balcony again X');
                       outofBoundsX = false
                       //hide out of bounds text
                       //document.getElementById('infoText').object3D.visible = false
@@ -734,12 +734,12 @@ observer.observe(document.body, {childList: true});
                     soundEntity.components.sound.stopSound();
                     
                    // //check if video is playing yet
-                   // if (videoElsePhoto){
-                   //   //play video
-                   //   var video = document.querySelector('#videosphere').components.material.material.map.image;
-                   //   if (!video) { return; }
-                   //   video.play();
-                   //  }
+                    if (videoElsePhoto){
+                      //play video
+                      var video = document.querySelector('#videosphere').components.material.material.map.image;
+                      if (!video) { return; }
+                      video.play();
+                     }
                   }    
             })  //end tap screen eventhandler
           
@@ -1399,9 +1399,10 @@ observer.observe(document.body, {childList: true});
              
   //audio button for toggling narrative audio on/off
              if (narrativeAudioExists) {
-                 var soundEntity = document.querySelector('#soundcue')
+                 
                  $('#audioButton').on('click',function(){
-                		playNarrativeAudio = !playNarrativeAudio
+						var soundEntity = document.querySelector('#soundcue')
+						playNarrativeAudio = !playNarrativeAudio
                 	  if (!playNarrativeAudio) {
                 	    //stop narrative audio
                       $('#audioButton').css("background-image", "url('./assets/speaking_off_icon_white-lqygci2pia.png')");
