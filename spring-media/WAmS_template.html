@@ -1,6 +1,6 @@
 //Do not replace the templateContents line at the top and bottom!
 
-var templateVersion = `1.0.1`;
+var templateVersion = `1.0.2`;
 
 var templateContents = `
 <!DOCTYPE html>
@@ -1190,7 +1190,8 @@ observer.observe(document.body, {childList: true});
   //Video event handler - used for bufferring checking
     AFRAME.registerComponent('videoeventhandler', {
       init: function() {
-          if (videoElsePhoto){
+          var videoStarted = false
+		  if (videoElsePhoto){
             var video = this.el.components.material.material.map.image;
             console.log('video = ' + video)
             
@@ -1210,7 +1211,12 @@ observer.observe(document.body, {childList: true});
             });
             
             video.addEventListener('playing', (event) => {
-              console.log('Video is no longer paused');
+              if (!videoStarted) {
+                videoStarted = true
+                utag.link({ event_name: "ar", event_action: "ar_video_playing", event_label: "video started playing"});
+                console.log('video started event sent')
+              }
+			  console.log('Video is no longer paused');
             });
             
             video.addEventListener('canplay', (event) => {
@@ -1393,7 +1399,8 @@ observer.observe(document.body, {childList: true});
             //info button - opens in same tab since leaving breaks gyroscope when returning on android
              if (infoLinkExists) {
                 $('#infoButton').on('click',function(){
-            	      window.open(infoURL, "_self"); 
+            	      utag.link({ event_name: "ar", event_action: "user_pressed_info-button", event_label: infoURL});
+					  window.open(infoURL, "_self"); 
             	  });
              }
              
